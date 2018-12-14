@@ -1,0 +1,4833 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="In [1]: 1%matplotlib inline In [2]: 1import pandas as pd In [3]: 1import numpy as np In [4]: 1import matplotlib.pyplot as plt In [5]: 1s = pd.Series([1,3,5,np.nan,6,8]) In [6]: 1s Out[6]: 12345670">
+<meta name="keywords" content="python ubuntu IT git hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从入门到跑路">
+<meta property="og:url" content="http://120.77.178.218/2018/12/13/10分钟入门Pandas/index.html">
+<meta property="og:site_name" content="从入门到跑路">
+<meta property="og:description" content="In [1]: 1%matplotlib inline In [2]: 1import pandas as pd In [3]: 1import numpy as np In [4]: 1import matplotlib.pyplot as plt In [5]: 1s = pd.Series([1,3,5,np.nan,6,8]) In [6]: 1s Out[6]: 12345670">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://120.77.178.218/2018/12/13/10分钟入门Pandas/132.png">
+<meta property="og:image" content="http://120.77.178.218/2018/12/13/10分钟入门Pandas/135.png">
+<meta property="og:updated_time" content="2018-12-13T04:25:53.452Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从入门到跑路">
+<meta name="twitter:description" content="In [1]: 1%matplotlib inline In [2]: 1import pandas as pd In [3]: 1import numpy as np In [4]: 1import matplotlib.pyplot as plt In [5]: 1s = pd.Series([1,3,5,np.nan,6,8]) In [6]: 1s Out[6]: 12345670">
+<meta name="twitter:image" content="http://120.77.178.218/2018/12/13/10分钟入门Pandas/132.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://120.77.178.218/2018/12/13/10分钟入门Pandas/"/>
+
+
+
+
+
+  <title> | 从入门到跑路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从入门到跑路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一个IT菜鸟的成长过程 ！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://120.77.178.218/2018/12/13/10分钟入门Pandas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Senzhong Deng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从入门到跑路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-13T11:47:11+08:00">
+                2018-12-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-13T12:25:53+08:00">
+                2018-12-13
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  39
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In [1]:</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">%<span class="selector-tag">matplotlib</span></span> inline</span><br></pre></td></tr></table></figure>
+<p>In [2]:</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+<p>In [3]:</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<p>In [4]:</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<p>In [5]:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s = pd.Series([<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,np.nan,<span class="number">6</span>,<span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+<p>In [6]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">s</span></span><br></pre></td></tr></table></figure>
+<p>Out[6]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">0    1<span class="selector-class">.0</span></span><br><span class="line">1    3<span class="selector-class">.0</span></span><br><span class="line">2    5<span class="selector-class">.0</span></span><br><span class="line">3    <span class="selector-tag">NaN</span></span><br><span class="line">4    6<span class="selector-class">.0</span></span><br><span class="line">5    8<span class="selector-class">.0</span></span><br><span class="line"><span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<p>In [7]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dates</span> = pd.date_range(<span class="string">'20130101'</span>, periods=<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+<p>In [8]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">dates</span></span><br></pre></td></tr></table></figure>
+<p>Out[8]:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DatetimeIndex(['<span class="number">2013</span><span class="number">-01</span><span class="number">-01</span>', '<span class="number">2013</span><span class="number">-01</span><span class="number">-02</span>', '<span class="number">2013</span><span class="number">-01</span><span class="number">-03</span>', '<span class="number">2013</span><span class="number">-01</span><span class="number">-04</span>',</span><br><span class="line">               '<span class="number">2013</span><span class="number">-01</span><span class="number">-05</span>', '<span class="number">2013</span><span class="number">-01</span><span class="number">-06</span>'],</span><br><span class="line">              dtype='datetime64[ns]', freq='D')</span><br></pre></td></tr></table></figure>
+<p>In [9]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(np<span class="selector-class">.random</span><span class="selector-class">.randn</span>(<span class="number">6</span>,<span class="number">4</span>), index=dates, <span class="attribute">columns</span>=list(<span class="string">'ABCD'</span>))</span><br></pre></td></tr></table></figure>
+<p>In [10]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">df</span></span><br></pre></td></tr></table></figure>
+<p>Out[10]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>-1.234543</td>
+<td>-0.181094</td>
+<td>0.602767</td>
+<td>0.024092</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>-0.308272</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>0.779937</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>-0.828424</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>-0.369570</td>
+<td>0.887738</td>
+<td>-0.067130</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>0.603919</td>
+<td>-0.292847</td>
+<td>-0.351932</td>
+<td>-0.546226</td>
+</tr>
+</tbody>
+</table>
+<p>In [11]:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df2 = pd.DataFrame(&#123;<span class="string">'A'</span> : 1., </span><br><span class="line">                    <span class="string">'B'</span> : <span class="type">pd.Timestamp</span>('<span class="number">20130102</span>'),</span><br><span class="line">                    <span class="string">'C'</span> : <span class="type">pd.Series</span>(<span class="number">1</span>,index=list(<span class="keyword">range</span>(<span class="number">4</span>)),dtype=<span class="symbol">'float32</span>'),</span><br><span class="line">                    <span class="string">'D'</span> : <span class="type">np.array</span>([<span class="number">3</span>] * <span class="number">4</span>,dtype=<span class="symbol">'int32</span>'),</span><br><span class="line">                    <span class="string">'E'</span> : <span class="type">pd.Categorical</span>([<span class="string">"test"</span>,<span class="string">"train"</span>,<span class="string">"test"</span>,<span class="string">"train"</span>]),</span><br><span class="line">                    <span class="string">'F'</span> : '<span class="type">foo</span>'&#125;)</span><br></pre></td></tr></table></figure>
+<p>In [12]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2</span><br></pre></td></tr></table></figure>
+<p>Out[12]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1.0</td>
+<td>2013-01-02</td>
+<td>1.0</td>
+<td>3</td>
+<td>test</td>
+<td>foo</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1.0</td>
+<td>2013-01-02</td>
+<td>1.0</td>
+<td>3</td>
+<td>train</td>
+<td>foo</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.0</td>
+<td>2013-01-02</td>
+<td>1.0</td>
+<td>3</td>
+<td>test</td>
+<td>foo</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1.0</td>
+<td>2013-01-02</td>
+<td>1.0</td>
+<td>3</td>
+<td>train</td>
+<td>foo</td>
+</tr>
+</tbody>
+</table>
+<p>In [13]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df2</span><span class="selector-class">.dtypes</span></span><br></pre></td></tr></table></figure>
+<p>Out[13]:</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A           <span class="built_in">float64</span></span><br><span class="line">B    datetime64[ns]</span><br><span class="line">C           <span class="built_in">float32</span></span><br><span class="line">D             <span class="built_in">int32</span></span><br><span class="line">E          category</span><br><span class="line">F            <span class="keyword">object</span></span><br><span class="line">dtype: <span class="keyword">object</span></span><br></pre></td></tr></table></figure>
+<p>In [14]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.head</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[14]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>-1.234543</td>
+<td>-0.181094</td>
+<td>0.602767</td>
+<td>0.024092</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>-0.308272</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>0.779937</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>-0.828424</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>-0.369570</td>
+<td>0.887738</td>
+<td>-0.067130</td>
+</tr>
+</tbody>
+</table>
+<p>In [15]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.tail</span>(3)</span><br></pre></td></tr></table></figure>
+<p>Out[15]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>-0.828424</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>-0.369570</td>
+<td>0.887738</td>
+<td>-0.067130</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>0.603919</td>
+<td>-0.292847</td>
+<td>-0.351932</td>
+<td>-0.546226</td>
+</tr>
+</tbody>
+</table>
+<p>In [16]:</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.<span class="keyword">index</span></span><br></pre></td></tr></table></figure>
+<p>Out[16]:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DatetimeIndex(['<span class="number">2013</span><span class="number">-01</span><span class="number">-01</span>', '<span class="number">2013</span><span class="number">-01</span><span class="number">-02</span>', '<span class="number">2013</span><span class="number">-01</span><span class="number">-03</span>', '<span class="number">2013</span><span class="number">-01</span><span class="number">-04</span>',</span><br><span class="line">               '<span class="number">2013</span><span class="number">-01</span><span class="number">-05</span>', '<span class="number">2013</span><span class="number">-01</span><span class="number">-06</span>'],</span><br><span class="line">              dtype='datetime64[ns]', freq='D')</span><br></pre></td></tr></table></figure>
+<p>In [17]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.columns</span></span><br></pre></td></tr></table></figure>
+<p>Out[17]:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Index([<span class="string">u'A'</span>, <span class="string">u'B'</span>, <span class="string">u'C'</span>, <span class="string">u'D'</span>], dtype=<span class="string">'object'</span>)</span><br></pre></td></tr></table></figure>
+<p>In [18]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.values</span></span><br></pre></td></tr></table></figure>
+<p>Out[18]:</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">array([[-<span class="number">1.23454325</span>, -<span class="number">0.18109375</span>,  <span class="number">0.60276697</span>,  <span class="number">0.02409219</span>],</span><br><span class="line">       [-<span class="number">1.01234439</span>, -<span class="number">1.74766336</span>, -<span class="number">0.44616522</span>, -<span class="number">0.30827222</span>],</span><br><span class="line">       [ <span class="number">0.10868385</span>, -<span class="number">0.69860582</span>,  <span class="number">0.29422346</span>,  <span class="number">0.77993654</span>],</span><br><span class="line">       [ <span class="number">0.87005021</span>, -<span class="number">0.16265896</span>, -<span class="number">1.84247599</span>, -<span class="number">0.82842427</span>],</span><br><span class="line">       [ <span class="number">1.58629419</span>, -<span class="number">0.36956975</span>,  <span class="number">0.88773803</span>, -<span class="number">0.06712956</span>],</span><br><span class="line">       [ <span class="number">0.60391916</span>, -<span class="number">0.29284674</span>, -<span class="number">0.35193192</span>, -<span class="number">0.54622645</span>]])</span><br></pre></td></tr></table></figure>
+<p>In [19]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.describe</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[19]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>count</td>
+<td>6.000000</td>
+<td>6.000000</td>
+<td>6.000000</td>
+<td>6.000000</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>0.153677</td>
+<td>-0.575406</td>
+<td>-0.142641</td>
+<td>-0.157671</td>
+</tr>
+<tr>
+<td>std</td>
+<td>1.100644</td>
+<td>0.606204</td>
+<td>0.983212</td>
+<td>0.555681</td>
+</tr>
+<tr>
+<td>min</td>
+<td>-1.234543</td>
+<td>-1.747663</td>
+<td>-1.842476</td>
+<td>-0.828424</td>
+</tr>
+<tr>
+<td>25%</td>
+<td>-0.732087</td>
+<td>-0.616347</td>
+<td>-0.422607</td>
+<td>-0.486738</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>0.356302</td>
+<td>-0.331208</td>
+<td>-0.028854</td>
+<td>-0.187701</td>
+</tr>
+<tr>
+<td>75%</td>
+<td>0.803517</td>
+<td>-0.209032</td>
+<td>0.525631</td>
+<td>0.001287</td>
+</tr>
+<tr>
+<td>max</td>
+<td>1.586294</td>
+<td>-0.162659</td>
+<td>0.887738</td>
+<td>0.779937</td>
+</tr>
+</tbody>
+</table>
+<p>In [20]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.T</span></span><br></pre></td></tr></table></figure>
+<p>Out[20]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>2013-01-01 00:00:00</th>
+<th>2013-01-02 00:00:00</th>
+<th>2013-01-03 00:00:00</th>
+<th>2013-01-04 00:00:00</th>
+<th>2013-01-05 00:00:00</th>
+<th>2013-01-06 00:00:00</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>-1.234543</td>
+<td>-1.012344</td>
+<td>0.108684</td>
+<td>0.870050</td>
+<td>1.586294</td>
+<td>0.603919</td>
+</tr>
+<tr>
+<td>B</td>
+<td>-0.181094</td>
+<td>-1.747663</td>
+<td>-0.698606</td>
+<td>-0.162659</td>
+<td>-0.369570</td>
+<td>-0.292847</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0.602767</td>
+<td>-0.446165</td>
+<td>0.294223</td>
+<td>-1.842476</td>
+<td>0.887738</td>
+<td>-0.351932</td>
+</tr>
+<tr>
+<td>D</td>
+<td>0.024092</td>
+<td>-0.308272</td>
+<td>0.779937</td>
+<td>-0.828424</td>
+<td>-0.067130</td>
+<td>-0.546226</td>
+</tr>
+</tbody>
+</table>
+<p>In [21]:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_index(<span class="attribute">axis</span>=1, <span class="attribute">ascending</span>=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[21]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>D</th>
+<th>C</th>
+<th>B</th>
+<th>A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>0.024092</td>
+<td>0.602767</td>
+<td>-0.181094</td>
+<td>-1.234543</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-0.308272</td>
+<td>-0.446165</td>
+<td>-1.747663</td>
+<td>-1.012344</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.779937</td>
+<td>0.294223</td>
+<td>-0.698606</td>
+<td>0.108684</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>-0.828424</td>
+<td>-1.842476</td>
+<td>-0.162659</td>
+<td>0.870050</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>-0.067130</td>
+<td>0.887738</td>
+<td>-0.369570</td>
+<td>1.586294</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>-0.546226</td>
+<td>-0.351932</td>
+<td>-0.292847</td>
+<td>0.603919</td>
+</tr>
+</tbody>
+</table>
+<p>In [22]:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(<span class="attribute">by</span>=<span class="string">'B'</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[22]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>-0.308272</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>0.779937</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>-0.369570</td>
+<td>0.887738</td>
+<td>-0.067130</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>0.603919</td>
+<td>-0.292847</td>
+<td>-0.351932</td>
+<td>-0.546226</td>
+</tr>
+<tr>
+<td>2013-01-01</td>
+<td>-1.234543</td>
+<td>-0.181094</td>
+<td>0.602767</td>
+<td>0.024092</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>-0.828424</td>
+</tr>
+</tbody>
+</table>
+<p>In [23]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'A'</span>]</span><br></pre></td></tr></table></figure>
+<p>Out[23]:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2013<span class="string">-01</span><span class="string">-01</span>   <span class="string">-1</span>.234543</span><br><span class="line">2013<span class="string">-01</span><span class="string">-02</span>   <span class="string">-1</span>.012344</span><br><span class="line">2013<span class="string">-01</span><span class="string">-03</span>    0.108684</span><br><span class="line">2013<span class="string">-01</span><span class="string">-04</span>    0.870050</span><br><span class="line">2013<span class="string">-01</span><span class="string">-05</span>    1.586294</span><br><span class="line">2013<span class="string">-01</span><span class="string">-06</span>    0.603919</span><br><span class="line">Freq: D, Name: A, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [24]:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df<span class="string">[0:3]</span></span><br></pre></td></tr></table></figure>
+<p>Out[24]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>-1.234543</td>
+<td>-0.181094</td>
+<td>0.602767</td>
+<td>0.024092</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>-0.308272</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>0.779937</td>
+</tr>
+</tbody>
+</table>
+<p>In [25]:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df['<span class="number">20130102</span>':'<span class="number">20130104</span>']</span><br></pre></td></tr></table></figure>
+<p>Out[25]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>-0.308272</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>0.779937</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>-0.828424</td>
+</tr>
+</tbody>
+</table>
+<p>In [26]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.loc</span><span class="selector-attr">[dates[0]</span>]</span><br></pre></td></tr></table></figure>
+<p>Out[26]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">A</span>   <span class="selector-tag">-1</span><span class="selector-class">.234543</span></span><br><span class="line"><span class="selector-tag">B</span>   <span class="selector-tag">-0</span><span class="selector-class">.181094</span></span><br><span class="line"><span class="selector-tag">C</span>    0<span class="selector-class">.602767</span></span><br><span class="line"><span class="selector-tag">D</span>    0<span class="selector-class">.024092</span></span><br><span class="line"><span class="selector-tag">Name</span>: 2013<span class="selector-tag">-01-01</span> 00<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<p>In [27]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[:,[<span class="string">'A'</span>,<span class="string">'B'</span>]]</span><br></pre></td></tr></table></figure>
+<p>Out[27]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>-1.234543</td>
+<td>-0.181094</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>-0.369570</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>0.603919</td>
+<td>-0.292847</td>
+</tr>
+</tbody>
+</table>
+<p>In [28]:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc['<span class="number">20130102</span>':'<span class="number">20130104</span>',['A','B']]</span><br></pre></td></tr></table></figure>
+<p>Out[28]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+</tr>
+</tbody>
+</table>
+<p>In [29]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[<span class="string">'20130102'</span>,[<span class="string">'A'</span>,<span class="string">'B'</span>]]</span><br></pre></td></tr></table></figure>
+<p>Out[29]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">A</span>   <span class="selector-tag">-1</span><span class="selector-class">.012344</span></span><br><span class="line"><span class="selector-tag">B</span>   <span class="selector-tag">-1</span><span class="selector-class">.747663</span></span><br><span class="line"><span class="selector-tag">Name</span>: 2013<span class="selector-tag">-01-02</span> 00<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<p>In [30]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[dates[<span class="number">0</span>],<span class="string">'A'</span>]</span><br></pre></td></tr></table></figure>
+<p>Out[30]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-1</span><span class="selector-class">.2345432480819052</span></span><br></pre></td></tr></table></figure>
+<p>In [31]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.at[dates[<span class="number">0</span>],<span class="string">'A'</span>]</span><br></pre></td></tr></table></figure>
+<p>Out[31]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-1</span><span class="selector-class">.2345432480819052</span></span><br></pre></td></tr></table></figure>
+<p>In [32]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.iloc</span><span class="selector-attr">[3]</span></span><br></pre></td></tr></table></figure>
+<p>Out[32]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">A</span>    0<span class="selector-class">.870050</span></span><br><span class="line"><span class="selector-tag">B</span>   <span class="selector-tag">-0</span><span class="selector-class">.162659</span></span><br><span class="line"><span class="selector-tag">C</span>   <span class="selector-tag">-1</span><span class="selector-class">.842476</span></span><br><span class="line"><span class="selector-tag">D</span>   <span class="selector-tag">-0</span><span class="selector-class">.828424</span></span><br><span class="line"><span class="selector-tag">Name</span>: 2013<span class="selector-tag">-01-04</span> 00<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<p>In [33]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.iloc</span><span class="selector-attr">[3:5,0:2]</span></span><br></pre></td></tr></table></figure>
+<p>Out[33]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>-0.369570</td>
+</tr>
+</tbody>
+</table>
+<p>In [34]:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.iloc[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>],[<span class="number">0</span>,<span class="number">2</span>]]</span><br></pre></td></tr></table></figure>
+<p>Out[34]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-0.446165</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>0.294223</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>0.887738</td>
+</tr>
+</tbody>
+</table>
+<p>In [35]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.iloc</span><span class="selector-attr">[1:3,:]</span></span><br></pre></td></tr></table></figure>
+<p>Out[35]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>-0.308272</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>0.779937</td>
+</tr>
+</tbody>
+</table>
+<p>In [36]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.iloc</span><span class="selector-attr">[:,1:3]</span></span><br></pre></td></tr></table></figure>
+<p>Out[36]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>-0.181094</td>
+<td>0.602767</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>-0.369570</td>
+<td>0.887738</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>-0.292847</td>
+<td>-0.351932</td>
+</tr>
+</tbody>
+</table>
+<p>In [37]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.iloc</span><span class="selector-attr">[1,1]</span></span><br></pre></td></tr></table></figure>
+<p>Out[37]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-1</span><span class="selector-class">.7476633559261565</span></span><br></pre></td></tr></table></figure>
+<p>In [38]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.iat</span><span class="selector-attr">[1,1]</span></span><br></pre></td></tr></table></figure>
+<p>Out[38]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-1</span><span class="selector-class">.7476633559261565</span></span><br></pre></td></tr></table></figure>
+<p>In [39]:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df<span class="string">[df.A&gt;0]</span></span><br></pre></td></tr></table></figure>
+<p>Out[39]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>0.779937</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>-0.828424</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>-0.369570</td>
+<td>0.887738</td>
+<td>-0.067130</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>0.603919</td>
+<td>-0.292847</td>
+<td>-0.351932</td>
+<td>-0.546226</td>
+</tr>
+</tbody>
+</table>
+<p>In [40]:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df<span class="string">[df &gt; 0]</span></span><br></pre></td></tr></table></figure>
+<p>Out[40]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.602767</td>
+<td>0.024092</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>NaN</td>
+<td>0.294223</td>
+<td>0.779937</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>NaN</td>
+<td>0.887738</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>0.603919</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>In [41]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">df2</span> = df.copy()</span><br></pre></td></tr></table></figure>
+<p>In [42]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2[<span class="string">'E'</span>] = [<span class="string">'one'</span>,<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>,<span class="string">'four'</span>,<span class="string">'three'</span>]</span><br></pre></td></tr></table></figure>
+<p>In [43]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2</span><br></pre></td></tr></table></figure>
+<p>Out[43]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>-1.234543</td>
+<td>-0.181094</td>
+<td>0.602767</td>
+<td>0.024092</td>
+<td>one</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>-0.308272</td>
+<td>one</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>0.779937</td>
+<td>two</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>-0.828424</td>
+<td>three</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>-0.369570</td>
+<td>0.887738</td>
+<td>-0.067130</td>
+<td>four</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>0.603919</td>
+<td>-0.292847</td>
+<td>-0.351932</td>
+<td>-0.546226</td>
+<td>three</td>
+</tr>
+</tbody>
+</table>
+<p>In [44]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2[df2[<span class="string">'E'</span>].isin([<span class="string">'two'</span>,<span class="string">'four'</span>])]</span><br></pre></td></tr></table></figure>
+<p>Out[44]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>0.779937</td>
+<td>two</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>-0.369570</td>
+<td>0.887738</td>
+<td>-0.067130</td>
+<td>four</td>
+</tr>
+</tbody>
+</table>
+<p>In [45]:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s1 = pd.Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], index=pd.date_range('<span class="number">20130102</span>', periods=<span class="number">6</span>))</span><br></pre></td></tr></table></figure>
+<p>In [46]:</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">s1</span></span><br></pre></td></tr></table></figure>
+<p>Out[46]:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2013<span class="string">-01</span><span class="string">-02</span>    1</span><br><span class="line">2013<span class="string">-01</span><span class="string">-03</span>    2</span><br><span class="line">2013<span class="string">-01</span><span class="string">-04</span>    3</span><br><span class="line">2013<span class="string">-01</span><span class="string">-05</span>    4</span><br><span class="line">2013<span class="string">-01</span><span class="string">-06</span>    5</span><br><span class="line">2013<span class="string">-01</span><span class="string">-07</span>    6</span><br><span class="line">Freq: D, dtype: int64</span><br></pre></td></tr></table></figure>
+<p>In [47]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'F'</span>] = s1</span><br></pre></td></tr></table></figure>
+<p>In [48]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.at[dates[<span class="number">0</span>],<span class="string">'A'</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>In [49]:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.iat[<span class="number">0</span>,<span class="number">1</span>] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>In [50]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.loc[:,<span class="string">'D'</span>] = np.array([<span class="number">5</span>] * len(df))</span><br></pre></td></tr></table></figure>
+<p>In [51]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">df</span></span><br></pre></td></tr></table></figure>
+<p>Out[51]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.602767</td>
+<td>5</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>5</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>5</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>5</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.586294</td>
+<td>-0.369570</td>
+<td>0.887738</td>
+<td>5</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>0.603919</td>
+<td>-0.292847</td>
+<td>-0.351932</td>
+<td>5</td>
+<td>5.0</td>
+</tr>
+</tbody>
+</table>
+<p>In [52]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">df2</span> = df.copy()</span><br></pre></td></tr></table></figure>
+<p>In [53]:</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2<span class="string">[df2 &gt; 0]</span> = -df2</span><br></pre></td></tr></table></figure>
+<p>In [54]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2</span><br></pre></td></tr></table></figure>
+<p>Out[54]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>-0.602767</td>
+<td>-5</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>-5</td>
+<td>-1.0</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>-0.108684</td>
+<td>-0.698606</td>
+<td>-0.294223</td>
+<td>-5</td>
+<td>-2.0</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>-0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>-5</td>
+<td>-3.0</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>-1.586294</td>
+<td>-0.369570</td>
+<td>-0.887738</td>
+<td>-5</td>
+<td>-4.0</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>-0.603919</td>
+<td>-0.292847</td>
+<td>-0.351932</td>
+<td>-5</td>
+<td>-5.0</td>
+</tr>
+</tbody>
+</table>
+<p>In [55]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">df1</span> = df.reindex(index=dates[<span class="number">0</span>:<span class="number">4</span>], columns=list(df.columns) + [<span class="string">'E'</span>])</span><br></pre></td></tr></table></figure>
+<p>In [56]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1.loc[dates[<span class="number">0</span>]:dates[<span class="number">1</span>],<span class="string">'E'</span>] = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>In [57]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1</span><br></pre></td></tr></table></figure>
+<p>Out[57]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>F</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.602767</td>
+<td>5</td>
+<td>NaN</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>5</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>5</td>
+<td>2.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>5</td>
+<td>3.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>In [58]:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1.dropna(<span class="attribute">how</span>=<span class="string">'any'</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[58]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>F</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>5</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+<p>In [59]:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df1.fillna(<span class="attribute">value</span>=5)</span><br></pre></td></tr></table></figure>
+<p>Out[59]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>F</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.602767</td>
+<td>5</td>
+<td>5.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>-0.446165</td>
+<td>5</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>0.108684</td>
+<td>-0.698606</td>
+<td>0.294223</td>
+<td>5</td>
+<td>2.0</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>0.870050</td>
+<td>-0.162659</td>
+<td>-1.842476</td>
+<td>5</td>
+<td>3.0</td>
+<td>5.0</td>
+</tr>
+</tbody>
+</table>
+<p>In [60]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">pd</span><span class="selector-class">.isnull</span>(<span class="selector-tag">df1</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[60]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>F</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<p>In [61]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.mean</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[61]:</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">A</span>    <span class="number">0.359434</span></span><br><span class="line">B   -<span class="number">0.545224</span></span><br><span class="line">C   -<span class="number">0.142641</span></span><br><span class="line">D    <span class="number">5.000000</span></span><br><span class="line">F    <span class="number">3.000000</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [62]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.mean</span>(1)</span><br></pre></td></tr></table></figure>
+<p>Out[62]:</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2013-01-01</span>    <span class="number">1.400692</span></span><br><span class="line"><span class="number">2013-01-02</span>    <span class="number">0.558765</span></span><br><span class="line"><span class="number">2013-01-03</span>    <span class="number">1.340860</span></span><br><span class="line"><span class="number">2013-01-04</span>    <span class="number">1.372983</span></span><br><span class="line"><span class="number">2013-01-05</span>    <span class="number">2.220892</span></span><br><span class="line"><span class="number">2013-01-06</span>    <span class="number">1.991828</span></span><br><span class="line">Freq: D, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [63]:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s = pd.Series([<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,np.nan,<span class="number">6</span>,<span class="number">8</span>], index=dates).shift(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>In [64]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">s</span></span><br></pre></td></tr></table></figure>
+<p>Out[64]:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2013<span class="string">-01</span><span class="string">-01</span>    NaN</span><br><span class="line">2013<span class="string">-01</span><span class="string">-02</span>    NaN</span><br><span class="line">2013<span class="string">-01</span><span class="string">-03</span>    1.0</span><br><span class="line">2013<span class="string">-01</span><span class="string">-04</span>    3.0</span><br><span class="line">2013<span class="string">-01</span><span class="string">-05</span>    5.0</span><br><span class="line">2013<span class="string">-01</span><span class="string">-06</span>    NaN</span><br><span class="line">Freq: D, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [65]:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sub(s, <span class="attribute">axis</span>=<span class="string">'index'</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[65]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>-0.891316</td>
+<td>-1.698606</td>
+<td>-0.705777</td>
+<td>4.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>-2.129950</td>
+<td>-3.162659</td>
+<td>-4.842476</td>
+<td>2.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>-3.413706</td>
+<td>-5.369570</td>
+<td>-4.112262</td>
+<td>0.0</td>
+<td>-1.0</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+<p>In [66]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.apply</span>(<span class="selector-tag">np</span><span class="selector-class">.cumsum</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[66]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013-01-01</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.602767</td>
+<td>5</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>2013-01-02</td>
+<td>-1.012344</td>
+<td>-1.747663</td>
+<td>0.156602</td>
+<td>10</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2013-01-03</td>
+<td>-0.903661</td>
+<td>-2.446269</td>
+<td>0.450825</td>
+<td>15</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>2013-01-04</td>
+<td>-0.033610</td>
+<td>-2.608928</td>
+<td>-1.391651</td>
+<td>20</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>2013-01-05</td>
+<td>1.552684</td>
+<td>-2.978498</td>
+<td>-0.503913</td>
+<td>25</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>2013-01-06</td>
+<td>2.156603</td>
+<td>-3.271345</td>
+<td>-0.855845</td>
+<td>30</td>
+<td>15.0</td>
+</tr>
+</tbody>
+</table>
+<p>In [67]:</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.apply(lambda <span class="keyword">x</span>: <span class="keyword">x</span>.<span class="keyword">max</span>() - <span class="keyword">x</span>.<span class="keyword">min</span>())</span><br></pre></td></tr></table></figure>
+<p>Out[67]:</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">A</span>    <span class="number">2.598639</span></span><br><span class="line">B    <span class="number">1.747663</span></span><br><span class="line">C    <span class="number">2.730214</span></span><br><span class="line">D    <span class="number">0.000000</span></span><br><span class="line">F    <span class="number">4.000000</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [68]:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s = pd.Series(np.random.randint(<span class="number">0</span>, <span class="number">7</span>, size=<span class="number">10</span>))</span><br></pre></td></tr></table></figure>
+<p>In [69]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">s</span></span><br></pre></td></tr></table></figure>
+<p>Out[69]:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>    <span class="number">1</span></span><br><span class="line"><span class="number">1</span>    <span class="number">3</span></span><br><span class="line"><span class="number">2</span>    <span class="number">1</span></span><br><span class="line"><span class="number">3</span>    <span class="number">6</span></span><br><span class="line"><span class="number">4</span>    <span class="number">6</span></span><br><span class="line"><span class="number">5</span>    <span class="number">6</span></span><br><span class="line"><span class="number">6</span>    <span class="number">2</span></span><br><span class="line"><span class="number">7</span>    <span class="number">6</span></span><br><span class="line"><span class="number">8</span>    <span class="number">1</span></span><br><span class="line"><span class="number">9</span>    <span class="number">2</span></span><br><span class="line"><span class="symbol">dtype:</span> int32</span><br></pre></td></tr></table></figure>
+<p>In [70]:</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.<span class="keyword">value</span><span class="number">_</span>counts()</span><br></pre></td></tr></table></figure>
+<p>Out[70]:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span>    <span class="number">4</span></span><br><span class="line"><span class="number">1</span>    <span class="number">3</span></span><br><span class="line"><span class="number">2</span>    <span class="number">2</span></span><br><span class="line"><span class="number">3</span>    <span class="number">1</span></span><br><span class="line"><span class="symbol">dtype:</span> int64</span><br></pre></td></tr></table></figure>
+<p>In [71]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">s</span> = pd.Series([<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'Aaba'</span>, <span class="string">'Baca'</span>, np.nan, <span class="string">'CABA'</span>, <span class="string">'dog'</span>, <span class="string">'cat'</span>])</span><br></pre></td></tr></table></figure>
+<p>In [72]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s<span class="selector-class">.str</span><span class="selector-class">.lower</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[72]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>       a</span><br><span class="line"><span class="number">1</span>       b</span><br><span class="line"><span class="number">2</span>       c</span><br><span class="line"><span class="number">3</span>    aaba</span><br><span class="line"><span class="number">4</span>    baca</span><br><span class="line"><span class="number">5</span>     NaN</span><br><span class="line"><span class="number">6</span>    caba</span><br><span class="line"><span class="number">7</span>     dog</span><br><span class="line"><span class="number">8</span>     cat</span><br><span class="line">dtype: object</span><br></pre></td></tr></table></figure>
+<p>In [73]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(np<span class="selector-class">.random</span><span class="selector-class">.randn</span>(<span class="number">10</span>, <span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<p>In [74]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">df</span></span><br></pre></td></tr></table></figure>
+<p>Out[74]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.087190</td>
+<td>0.378057</td>
+<td>1.230033</td>
+<td>-1.916034</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1.845394</td>
+<td>-0.493289</td>
+<td>1.341151</td>
+<td>-0.312285</td>
+</tr>
+<tr>
+<td>2</td>
+<td>-1.414530</td>
+<td>0.567152</td>
+<td>-1.266626</td>
+<td>-0.824010</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.085407</td>
+<td>1.743999</td>
+<td>1.059148</td>
+<td>0.967338</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1.968624</td>
+<td>-0.456669</td>
+<td>-1.170885</td>
+<td>0.144196</td>
+</tr>
+<tr>
+<td>5</td>
+<td>-0.095139</td>
+<td>-0.307934</td>
+<td>1.317358</td>
+<td>-0.744105</td>
+</tr>
+<tr>
+<td>6</td>
+<td>-1.557237</td>
+<td>-1.185375</td>
+<td>0.840714</td>
+<td>1.070566</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0.049833</td>
+<td>-0.967053</td>
+<td>1.201201</td>
+<td>-0.469980</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.782234</td>
+<td>0.027085</td>
+<td>0.573083</td>
+<td>1.116846</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1.293508</td>
+<td>1.188724</td>
+<td>-1.044702</td>
+<td>-0.973416</td>
+</tr>
+</tbody>
+</table>
+<p>In [75]:</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pieces = <span class="comment">[df<span class="comment">[:3]</span>, df<span class="comment">[3:7]</span>, df<span class="comment">[7:]</span>]</span></span><br></pre></td></tr></table></figure>
+<p>In [76]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">pd</span><span class="selector-class">.concat</span>(<span class="selector-tag">pieces</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[76]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0.087190</td>
+<td>0.378057</td>
+<td>1.230033</td>
+<td>-1.916034</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1.845394</td>
+<td>-0.493289</td>
+<td>1.341151</td>
+<td>-0.312285</td>
+</tr>
+<tr>
+<td>2</td>
+<td>-1.414530</td>
+<td>0.567152</td>
+<td>-1.266626</td>
+<td>-0.824010</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.085407</td>
+<td>1.743999</td>
+<td>1.059148</td>
+<td>0.967338</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1.968624</td>
+<td>-0.456669</td>
+<td>-1.170885</td>
+<td>0.144196</td>
+</tr>
+<tr>
+<td>5</td>
+<td>-0.095139</td>
+<td>-0.307934</td>
+<td>1.317358</td>
+<td>-0.744105</td>
+</tr>
+<tr>
+<td>6</td>
+<td>-1.557237</td>
+<td>-1.185375</td>
+<td>0.840714</td>
+<td>1.070566</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0.049833</td>
+<td>-0.967053</td>
+<td>1.201201</td>
+<td>-0.469980</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.782234</td>
+<td>0.027085</td>
+<td>0.573083</td>
+<td>1.116846</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1.293508</td>
+<td>1.188724</td>
+<td>-1.044702</td>
+<td>-0.973416</td>
+</tr>
+</tbody>
+</table>
+<p>In [77]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">left</span> = pd.DataFrame(&#123;<span class="string">'key'</span>: [<span class="string">'foo'</span>, <span class="string">'foo'</span>], <span class="string">'lval'</span>: [<span class="number">1</span>, <span class="number">2</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<p>In [78]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">right</span> = pd.DataFrame(&#123;<span class="string">'key'</span>: [<span class="string">'foo'</span>, <span class="string">'foo'</span>], <span class="string">'rval'</span>: [<span class="number">4</span>, <span class="number">5</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<p>In [79]:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">left</span></span><br></pre></td></tr></table></figure>
+<p>Out[79]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>key</th>
+<th>lval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>foo</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>foo</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>In [80]:</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">right</span></span><br></pre></td></tr></table></figure>
+<p>Out[80]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>key</th>
+<th>rval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>foo</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>foo</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>In [81]:</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.<span class="built_in">merge</span>(left, <span class="literal">right</span>, <span class="keyword">on</span>=<span class="string">'key'</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[81]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>key</th>
+<th>lval</th>
+<th>rval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>foo</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>1</td>
+<td>foo</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>foo</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>3</td>
+<td>foo</td>
+<td>2</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>In [82]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(np<span class="selector-class">.random</span><span class="selector-class">.randn</span>(<span class="number">8</span>, <span class="number">4</span>), <span class="attribute">columns</span>=[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>])</span><br></pre></td></tr></table></figure>
+<p>In [83]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">df</span></span><br></pre></td></tr></table></figure>
+<p>Out[83]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>-1.137633</td>
+<td>1.190761</td>
+<td>-1.589958</td>
+<td>0.274725</td>
+</tr>
+<tr>
+<td>1</td>
+<td>-1.182860</td>
+<td>-0.964490</td>
+<td>0.701884</td>
+<td>-0.209471</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.708852</td>
+<td>-0.926927</td>
+<td>-1.044458</td>
+<td>-1.501952</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.956593</td>
+<td>0.605129</td>
+<td>0.929932</td>
+<td>0.382138</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.443152</td>
+<td>0.795685</td>
+<td>-1.092606</td>
+<td>0.384814</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.570427</td>
+<td>0.134011</td>
+<td>0.425411</td>
+<td>0.672966</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.557559</td>
+<td>-1.400583</td>
+<td>1.328377</td>
+<td>-1.237753</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2.263220</td>
+<td>0.883696</td>
+<td>1.772972</td>
+<td>-1.388512</td>
+</tr>
+</tbody>
+</table>
+<p>In [84]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">s</span> = df.iloc[<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p>In [85]:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.append(s, <span class="attribute">ignore_index</span>=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[85]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>-1.137633</td>
+<td>1.190761</td>
+<td>-1.589958</td>
+<td>0.274725</td>
+</tr>
+<tr>
+<td>1</td>
+<td>-1.182860</td>
+<td>-0.964490</td>
+<td>0.701884</td>
+<td>-0.209471</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.708852</td>
+<td>-0.926927</td>
+<td>-1.044458</td>
+<td>-1.501952</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.956593</td>
+<td>0.605129</td>
+<td>0.929932</td>
+<td>0.382138</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.443152</td>
+<td>0.795685</td>
+<td>-1.092606</td>
+<td>0.384814</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.570427</td>
+<td>0.134011</td>
+<td>0.425411</td>
+<td>0.672966</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.557559</td>
+<td>-1.400583</td>
+<td>1.328377</td>
+<td>-1.237753</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2.263220</td>
+<td>0.883696</td>
+<td>1.772972</td>
+<td>-1.388512</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.956593</td>
+<td>0.605129</td>
+<td>0.929932</td>
+<td>0.382138</td>
+</tr>
+</tbody>
+</table>
+<p>In [86]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(&#123;<span class="string">'A'</span> : [<span class="string">'foo'</span>, <span class="string">'bar'</span>, <span class="string">'foo'</span>, <span class="string">'bar'</span>,</span><br><span class="line">                          <span class="string">'foo'</span>, <span class="string">'bar'</span>, <span class="string">'foo'</span>, <span class="string">'foo'</span>],</span><br><span class="line">                   <span class="string">'B'</span> : [<span class="string">'one'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>,</span><br><span class="line">                           <span class="string">'two'</span>, <span class="string">'two'</span>, <span class="string">'one'</span>, <span class="string">'three'</span>],</span><br><span class="line">                   <span class="string">'C'</span> : np<span class="selector-class">.random</span><span class="selector-class">.randn</span>(<span class="number">8</span>),</span><br><span class="line">                   <span class="string">'D'</span> : np<span class="selector-class">.random</span><span class="selector-class">.randn</span>(<span class="number">8</span>)&#125;)</span><br></pre></td></tr></table></figure>
+<p>In [87]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">df</span></span><br></pre></td></tr></table></figure>
+<p>Out[87]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>foo</td>
+<td>one</td>
+<td>0.135346</td>
+<td>-0.916001</td>
+</tr>
+<tr>
+<td>1</td>
+<td>bar</td>
+<td>one</td>
+<td>-0.907362</td>
+<td>0.550130</td>
+</tr>
+<tr>
+<td>2</td>
+<td>foo</td>
+<td>two</td>
+<td>-1.758074</td>
+<td>0.264998</td>
+</tr>
+<tr>
+<td>3</td>
+<td>bar</td>
+<td>three</td>
+<td>0.153849</td>
+<td>0.566296</td>
+</tr>
+<tr>
+<td>4</td>
+<td>foo</td>
+<td>two</td>
+<td>-1.033947</td>
+<td>0.551321</td>
+</tr>
+<tr>
+<td>5</td>
+<td>bar</td>
+<td>two</td>
+<td>0.494596</td>
+<td>-0.859861</td>
+</tr>
+<tr>
+<td>6</td>
+<td>foo</td>
+<td>one</td>
+<td>0.347631</td>
+<td>0.106605</td>
+</tr>
+<tr>
+<td>7</td>
+<td>foo</td>
+<td>three</td>
+<td>0.785117</td>
+<td>-0.138477</td>
+</tr>
+</tbody>
+</table>
+<p>In [88]:</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby<span class="comment">('A')</span>.sum<span class="comment">()</span></span><br></pre></td></tr></table></figure>
+<p>Out[88]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bar</td>
+<td>-0.258916</td>
+<td>0.256565</td>
+</tr>
+<tr>
+<td>foo</td>
+<td>-1.523927</td>
+<td>-0.131554</td>
+</tr>
+</tbody>
+</table>
+<p>In [89]:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.groupby</span>([<span class="string">'A'</span>,<span class="string">'B'</span>])<span class="selector-class">.sum</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[89]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>B</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bar</td>
+<td>one</td>
+<td>-0.907362</td>
+<td>0.550130</td>
+</tr>
+<tr>
+<td>three</td>
+<td>0.153849</td>
+<td>0.566296</td>
+<td></td>
+</tr>
+<tr>
+<td>two</td>
+<td>0.494596</td>
+<td>-0.859861</td>
+<td></td>
+</tr>
+<tr>
+<td>foo</td>
+<td>one</td>
+<td>0.482977</td>
+<td>-0.809396</td>
+</tr>
+<tr>
+<td>three</td>
+<td>0.785117</td>
+<td>-0.138477</td>
+<td></td>
+</tr>
+<tr>
+<td>two</td>
+<td>-2.792021</td>
+<td>0.816319</td>
+</tr>
+</tbody>
+</table>
+<p>In [90]:</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tuples = list(<span class="name">zip</span>(<span class="name">*</span>[['bar', 'bar', 'baz', 'baz', </span><br><span class="line">                     'foo', 'foo', 'qux', 'qux'],</span><br><span class="line">                    ['one', 'two', 'one', 'two',</span><br><span class="line">                      'one', 'two', 'one', 'two']]))</span><br></pre></td></tr></table></figure>
+<p>In [91]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index = pd<span class="selector-class">.MultiIndex</span><span class="selector-class">.from_tuples</span>(tuples, names=[<span class="string">'first'</span>, <span class="string">'second'</span>])</span><br></pre></td></tr></table></figure>
+<p>In [92]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(np<span class="selector-class">.random</span><span class="selector-class">.randn</span>(<span class="number">8</span>, <span class="number">2</span>), index=index, <span class="attribute">columns</span>=[<span class="string">'A'</span>, <span class="string">'B'</span>])</span><br></pre></td></tr></table></figure>
+<p>In [93]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">df2</span> = df[:<span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+<p>In [94]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df2</span><br></pre></td></tr></table></figure>
+<p>Out[94]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>first</td>
+<td>second</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bar</td>
+<td>one</td>
+<td>-0.723323</td>
+<td>0.071984</td>
+</tr>
+<tr>
+<td>two</td>
+<td>-1.068435</td>
+<td>-0.485561</td>
+<td></td>
+</tr>
+<tr>
+<td>baz</td>
+<td>one</td>
+<td>0.018726</td>
+<td>-0.379056</td>
+</tr>
+<tr>
+<td>two</td>
+<td>2.051579</td>
+<td>-0.789019</td>
+</tr>
+</tbody>
+</table>
+<p>In [95]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">stacked</span> = df2.stack()</span><br></pre></td></tr></table></figure>
+<p>In [96]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">stacked</span></span><br></pre></td></tr></table></figure>
+<p>Out[96]:</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">first  second   </span><br><span class="line">bar    one     <span class="keyword">A</span>   -<span class="number">0.723323</span></span><br><span class="line">               B    <span class="number">0.071984</span></span><br><span class="line">       two     <span class="keyword">A</span>   -<span class="number">1.068435</span></span><br><span class="line">               B   -<span class="number">0.485561</span></span><br><span class="line">baz    one     <span class="keyword">A</span>    <span class="number">0.018726</span></span><br><span class="line">               B   -<span class="number">0.379056</span></span><br><span class="line">       two     <span class="keyword">A</span>    <span class="number">2.051579</span></span><br><span class="line">               B   -<span class="number">0.789019</span></span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [97]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">stacked</span><span class="selector-class">.unstack</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[97]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>first</td>
+<td>second</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bar</td>
+<td>one</td>
+<td>-0.723323</td>
+<td>0.071984</td>
+</tr>
+<tr>
+<td>two</td>
+<td>-1.068435</td>
+<td>-0.485561</td>
+<td></td>
+</tr>
+<tr>
+<td>baz</td>
+<td>one</td>
+<td>0.018726</td>
+<td>-0.379056</td>
+</tr>
+<tr>
+<td>two</td>
+<td>2.051579</td>
+<td>-0.789019</td>
+</tr>
+</tbody>
+</table>
+<p>In [98]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">stacked</span><span class="selector-class">.unstack</span>(1)</span><br></pre></td></tr></table></figure>
+<p>Out[98]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>second</th>
+<th>one</th>
+<th>two</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>first</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bar</td>
+<td>A</td>
+<td>-0.723323</td>
+<td>-1.068435</td>
+</tr>
+<tr>
+<td>B</td>
+<td>0.071984</td>
+<td>-0.485561</td>
+<td></td>
+</tr>
+<tr>
+<td>baz</td>
+<td>A</td>
+<td>0.018726</td>
+<td>2.051579</td>
+</tr>
+<tr>
+<td>B</td>
+<td>-0.379056</td>
+<td>-0.789019</td>
+</tr>
+</tbody>
+</table>
+<p>In [99]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">stacked</span><span class="selector-class">.unstack</span>(0)</span><br></pre></td></tr></table></figure>
+<p>Out[99]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>first</th>
+<th>bar</th>
+<th>baz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>second</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>one</td>
+<td>A</td>
+<td>-0.723323</td>
+<td>0.018726</td>
+</tr>
+<tr>
+<td>B</td>
+<td>0.071984</td>
+<td>-0.379056</td>
+<td></td>
+</tr>
+<tr>
+<td>two</td>
+<td>A</td>
+<td>-1.068435</td>
+<td>2.051579</td>
+</tr>
+<tr>
+<td>B</td>
+<td>-0.485561</td>
+<td>-0.789019</td>
+</tr>
+</tbody>
+</table>
+<p>In [100]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df = pd.<span class="symbol">DataFrame</span>(&#123;<span class="string">'A'</span> : [<span class="string">'one'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>] * <span class="number">3</span>,</span><br><span class="line">                   <span class="string">'B'</span> : [<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>] * <span class="number">4</span>,</span><br><span class="line">                   <span class="string">'C'</span> : [<span class="string">'foo'</span>, <span class="string">'foo'</span>, <span class="string">'foo'</span>, <span class="string">'bar'</span>, <span class="string">'bar'</span>, <span class="string">'bar'</span>] * <span class="number">2</span>,</span><br><span class="line">                   <span class="string">'D'</span> : np.random.randn(<span class="number">12</span>),</span><br><span class="line">                   <span class="string">'E'</span> : np.random.randn(<span class="number">12</span>)&#125;)</span><br></pre></td></tr></table></figure>
+<p>In [101]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">df</span></span><br></pre></td></tr></table></figure>
+<p>Out[101]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>one</td>
+<td>A</td>
+<td>foo</td>
+<td>-0.435141</td>
+<td>-0.012559</td>
+</tr>
+<tr>
+<td>1</td>
+<td>one</td>
+<td>B</td>
+<td>foo</td>
+<td>1.419821</td>
+<td>1.676063</td>
+</tr>
+<tr>
+<td>2</td>
+<td>two</td>
+<td>C</td>
+<td>foo</td>
+<td>-0.844238</td>
+<td>-0.248897</td>
+</tr>
+<tr>
+<td>3</td>
+<td>three</td>
+<td>A</td>
+<td>bar</td>
+<td>0.291280</td>
+<td>1.768196</td>
+</tr>
+<tr>
+<td>4</td>
+<td>one</td>
+<td>B</td>
+<td>bar</td>
+<td>-0.559366</td>
+<td>-1.223321</td>
+</tr>
+<tr>
+<td>5</td>
+<td>one</td>
+<td>C</td>
+<td>bar</td>
+<td>-1.111149</td>
+<td>0.599756</td>
+</tr>
+<tr>
+<td>6</td>
+<td>two</td>
+<td>A</td>
+<td>foo</td>
+<td>-0.980251</td>
+<td>0.168256</td>
+</tr>
+<tr>
+<td>7</td>
+<td>three</td>
+<td>B</td>
+<td>foo</td>
+<td>0.596242</td>
+<td>-0.515708</td>
+</tr>
+<tr>
+<td>8</td>
+<td>one</td>
+<td>C</td>
+<td>foo</td>
+<td>-0.445593</td>
+<td>0.528068</td>
+</tr>
+<tr>
+<td>9</td>
+<td>one</td>
+<td>A</td>
+<td>bar</td>
+<td>0.344460</td>
+<td>-0.199001</td>
+</tr>
+<tr>
+<td>10</td>
+<td>two</td>
+<td>B</td>
+<td>bar</td>
+<td>-1.455970</td>
+<td>-0.209612</td>
+</tr>
+<tr>
+<td>11</td>
+<td>three</td>
+<td>C</td>
+<td>bar</td>
+<td>0.406563</td>
+<td>0.340673</td>
+</tr>
+</tbody>
+</table>
+<p>In [102]:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.pivot_table(df, <span class="keyword">values</span>=<span class="string">'D'</span>, <span class="keyword">index</span>=[<span class="string">'A'</span>, <span class="string">'B'</span>], columns=[<span class="string">'C'</span>])</span><br></pre></td></tr></table></figure>
+<p>Out[102]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>C</th>
+<th>bar</th>
+<th>foo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>B</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>one</td>
+<td>A</td>
+<td>0.344460</td>
+<td>-0.435141</td>
+</tr>
+<tr>
+<td>B</td>
+<td>-0.559366</td>
+<td>1.419821</td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>-1.111149</td>
+<td>-0.445593</td>
+<td></td>
+</tr>
+<tr>
+<td>three</td>
+<td>A</td>
+<td>0.291280</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>B</td>
+<td>NaN</td>
+<td>0.596242</td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>0.406563</td>
+<td>NaN</td>
+<td></td>
+</tr>
+<tr>
+<td>two</td>
+<td>A</td>
+<td>NaN</td>
+<td>-0.980251</td>
+</tr>
+<tr>
+<td>B</td>
+<td>-1.455970</td>
+<td>NaN</td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>NaN</td>
+<td>-0.844238</td>
+</tr>
+</tbody>
+</table>
+<p>In [103]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">rng</span> = pd.date_range(<span class="string">'1/1/2012'</span>, periods=<span class="number">100</span>, freq=<span class="string">'S'</span>)</span><br></pre></td></tr></table></figure>
+<p>In [104]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts = pd.Series(np<span class="selector-class">.random</span><span class="selector-class">.randint</span>(<span class="number">0</span>, <span class="number">500</span>, len(rng)), index=rng)</span><br></pre></td></tr></table></figure>
+<p>In [105]:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ts</span><span class="selector-class">.resample</span>(<span class="string">'5Min'</span>)<span class="selector-class">.sum</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[105]:</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2012</span><span class="number">-01</span><span class="number">-01</span>    <span class="number">26177</span></span><br><span class="line"><span class="type">Freq</span>: <span class="number">5</span>T, d<span class="keyword">type</span>: int32</span><br></pre></td></tr></table></figure>
+<p>In [106]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">rng</span> = pd.date_range(<span class="string">'3/6/2012 00:00'</span>, periods=<span class="number">5</span>, freq=<span class="string">'D'</span>)</span><br></pre></td></tr></table></figure>
+<p>In [107]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts = pd.Series(np<span class="selector-class">.random</span><span class="selector-class">.randn</span>(len(rng)), rng)</span><br></pre></td></tr></table></figure>
+<p>In [108]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ts</span></span><br></pre></td></tr></table></figure>
+<p>Out[108]:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2012<span class="string">-03</span><span class="string">-06</span>    1.964786</span><br><span class="line">2012<span class="string">-03</span><span class="string">-07</span>   <span class="string">-0</span>.086269</span><br><span class="line">2012<span class="string">-03</span><span class="string">-08</span>    0.017538</span><br><span class="line">2012<span class="string">-03</span><span class="string">-09</span>   <span class="string">-0</span>.128088</span><br><span class="line">2012<span class="string">-03</span><span class="string">-10</span>   <span class="string">-0</span>.657546</span><br><span class="line">Freq: D, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [109]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ts_utc</span> = ts.tz_localize(<span class="string">'UTC'</span>)</span><br></pre></td></tr></table></figure>
+<p>In [110]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts_utc</span><br></pre></td></tr></table></figure>
+<p>Out[110]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2012<span class="selector-tag">-03-06</span> 00<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00+00</span><span class="selector-pseudo">:00</span>    1<span class="selector-class">.964786</span></span><br><span class="line">2012<span class="selector-tag">-03-07</span> 00<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00+00</span><span class="selector-pseudo">:00</span>   <span class="selector-tag">-0</span><span class="selector-class">.086269</span></span><br><span class="line">2012<span class="selector-tag">-03-08</span> 00<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00+00</span><span class="selector-pseudo">:00</span>    0<span class="selector-class">.017538</span></span><br><span class="line">2012<span class="selector-tag">-03-09</span> 00<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00+00</span><span class="selector-pseudo">:00</span>   <span class="selector-tag">-0</span><span class="selector-class">.128088</span></span><br><span class="line">2012<span class="selector-tag">-03-10</span> 00<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00+00</span><span class="selector-pseudo">:00</span>   <span class="selector-tag">-0</span><span class="selector-class">.657546</span></span><br><span class="line"><span class="selector-tag">Freq</span>: <span class="selector-tag">D</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<p>In [111]:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ts_utc</span><span class="selector-class">.tz_convert</span>(<span class="string">'US/Eastern'</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[111]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2012<span class="selector-tag">-03-05</span> 19<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00-05</span><span class="selector-pseudo">:00</span>    1<span class="selector-class">.964786</span></span><br><span class="line">2012<span class="selector-tag">-03-06</span> 19<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00-05</span><span class="selector-pseudo">:00</span>   <span class="selector-tag">-0</span><span class="selector-class">.086269</span></span><br><span class="line">2012<span class="selector-tag">-03-07</span> 19<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00-05</span><span class="selector-pseudo">:00</span>    0<span class="selector-class">.017538</span></span><br><span class="line">2012<span class="selector-tag">-03-08</span> 19<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00-05</span><span class="selector-pseudo">:00</span>   <span class="selector-tag">-0</span><span class="selector-class">.128088</span></span><br><span class="line">2012<span class="selector-tag">-03-09</span> 19<span class="selector-pseudo">:00</span><span class="selector-pseudo">:00-05</span><span class="selector-pseudo">:00</span>   <span class="selector-tag">-0</span><span class="selector-class">.657546</span></span><br><span class="line"><span class="selector-tag">Freq</span>: <span class="selector-tag">D</span>, <span class="selector-tag">dtype</span>: <span class="selector-tag">float64</span></span><br></pre></td></tr></table></figure>
+<p>In [112]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">rng</span> = pd.date_range(<span class="string">'1/1/2012'</span>, periods=<span class="number">5</span>, freq=<span class="string">'M'</span>)</span><br></pre></td></tr></table></figure>
+<p>In [113]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts = pd.Series(np<span class="selector-class">.random</span><span class="selector-class">.randn</span>(len(rng)), index=rng)</span><br></pre></td></tr></table></figure>
+<p>In [114]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ts</span></span><br></pre></td></tr></table></figure>
+<p>Out[114]:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2012<span class="string">-01</span><span class="string">-31</span>    0.558833</span><br><span class="line">2012<span class="string">-02</span><span class="string">-29</span>   <span class="string">-0</span>.213529</span><br><span class="line">2012<span class="string">-03</span><span class="string">-31</span>   <span class="string">-0</span>.934557</span><br><span class="line">2012<span class="string">-04</span><span class="string">-30</span>   <span class="string">-1</span>.941257</span><br><span class="line">2012<span class="string">-05</span><span class="string">-31</span>   <span class="string">-0</span>.705337</span><br><span class="line">Freq: M, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [115]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ps</span> = ts.to_period()</span><br></pre></td></tr></table></figure>
+<p>In [116]:</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ps</span></span><br></pre></td></tr></table></figure>
+<p>Out[116]:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2012<span class="string">-01</span>    0.558833</span><br><span class="line">2012<span class="string">-02</span>   <span class="string">-0</span>.213529</span><br><span class="line">2012<span class="string">-03</span>   <span class="string">-0</span>.934557</span><br><span class="line">2012<span class="string">-04</span>   <span class="string">-1</span>.941257</span><br><span class="line">2012<span class="string">-05</span>   <span class="string">-0</span>.705337</span><br><span class="line">Freq: M, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [117]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ps</span><span class="selector-class">.to_timestamp</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[117]:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2012<span class="string">-01</span><span class="string">-01</span>    0.558833</span><br><span class="line">2012<span class="string">-02</span><span class="string">-01</span>   <span class="string">-0</span>.213529</span><br><span class="line">2012<span class="string">-03</span><span class="string">-01</span>   <span class="string">-0</span>.934557</span><br><span class="line">2012<span class="string">-04</span><span class="string">-01</span>   <span class="string">-1</span>.941257</span><br><span class="line">2012<span class="string">-05</span><span class="string">-01</span>   <span class="string">-0</span>.705337</span><br><span class="line">Freq: MS, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [118]:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prng = pd.period_range('<span class="number">1990</span>Q1', '<span class="number">2000</span>Q4', freq='Q-NOV')</span><br></pre></td></tr></table></figure>
+<p>In [119]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts = pd.Series(np<span class="selector-class">.random</span><span class="selector-class">.randn</span>(len(prng)), prng)</span><br></pre></td></tr></table></figure>
+<p>In [120]:</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts.index = (prng.asfre<span class="string">q('M', 'e')</span> + <span class="number">1</span>).asfre<span class="string">q('H', 's')</span> + <span class="number">9</span></span><br></pre></td></tr></table></figure>
+<p>In [121]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ts</span><span class="selector-class">.head</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[121]:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1990<span class="string">-03</span><span class="string">-01</span> 09:00    0.612225</span><br><span class="line">1990<span class="string">-06</span><span class="string">-01</span> 09:00    0.125501</span><br><span class="line">1990<span class="string">-09</span><span class="string">-01</span> 09:00   <span class="string">-0</span>.647144</span><br><span class="line">1990<span class="string">-12</span><span class="string">-01</span> 09:00    0.858475</span><br><span class="line">1991<span class="string">-03</span><span class="string">-01</span> 09:00    0.408605</span><br><span class="line">Freq: H, dtype: float64</span><br></pre></td></tr></table></figure>
+<p>In [122]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">df</span> = pd.DataFrame(&#123;<span class="string">"id"</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], <span class="string">"raw_grade"</span>:[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'b'</span>, <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'e'</span>]&#125;)</span><br></pre></td></tr></table></figure>
+<p>In [123]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">"grade"</span>] = df[<span class="string">"raw_grade"</span>].astype(<span class="string">"category"</span>)</span><br></pre></td></tr></table></figure>
+<p>In [124]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">"grade"</span>]</span><br></pre></td></tr></table></figure>
+<p>Out[124]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>    a</span><br><span class="line"><span class="number">1</span>    b</span><br><span class="line"><span class="number">2</span>    b</span><br><span class="line"><span class="number">3</span>    a</span><br><span class="line"><span class="number">4</span>    a</span><br><span class="line"><span class="number">5</span>    e</span><br><span class="line">Name: grade, dtype: category</span><br><span class="line">Categories (<span class="number">3</span>, object): [<span class="selector-tag">a</span>, <span class="selector-tag">b</span>, e]</span><br></pre></td></tr></table></figure>
+<p>In [125]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">"grade"</span>]<span class="selector-class">.cat</span><span class="selector-class">.categories</span> = [<span class="string">"very good"</span>, <span class="string">"good"</span>, <span class="string">"very bad"</span>]</span><br></pre></td></tr></table></figure>
+<p>In [126]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">"grade"</span>] = df[<span class="string">"grade"</span>].cat.set_categories([<span class="string">"very bad"</span>, <span class="string">"bad"</span>, <span class="string">"medium"</span>, <span class="string">"good"</span>, <span class="string">"very good"</span>])</span><br></pre></td></tr></table></figure>
+<p>In [127]:</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">"grade"</span>]</span><br></pre></td></tr></table></figure>
+<p>Out[127]:</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>    very good</span><br><span class="line"><span class="number">1</span>         good</span><br><span class="line"><span class="number">2</span>         good</span><br><span class="line"><span class="number">3</span>    very good</span><br><span class="line"><span class="number">4</span>    very good</span><br><span class="line"><span class="number">5</span>     very <span class="keyword">bad</span></span><br><span class="line"><span class="keyword">Name: </span>grade, dtype: category</span><br><span class="line"><span class="symbol">Categories</span> (<span class="number">5</span>, object): [very <span class="keyword">bad, </span><span class="keyword">bad, </span>medium, good, very good]</span><br></pre></td></tr></table></figure>
+<p>In [128]:</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(<span class="attribute">by</span>=<span class="string">"grade"</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[128]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>id</th>
+<th>raw_grade</th>
+<th>grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>6</td>
+<td>e</td>
+<td>very bad</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>b</td>
+<td>good</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>b</td>
+<td>good</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>a</td>
+<td>very good</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>a</td>
+<td>very good</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>a</td>
+<td>very good</td>
+</tr>
+</tbody>
+</table>
+<p>In [129]:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.groupby</span>(<span class="string">"grade"</span>)<span class="selector-class">.size</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[129]:</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">grade</span></span><br><span class="line"><span class="symbol">very</span> <span class="keyword">bad </span>    <span class="number">1</span></span><br><span class="line"><span class="keyword">bad </span>         <span class="number">0</span></span><br><span class="line"><span class="symbol">medium</span>       <span class="number">0</span></span><br><span class="line"><span class="symbol">good</span>         <span class="number">2</span></span><br><span class="line"><span class="symbol">very</span> good    <span class="number">3</span></span><br><span class="line"><span class="symbol">dtype</span>: int64</span><br></pre></td></tr></table></figure>
+<p>In [130]:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts = pd.Series(np.random.randn(<span class="number">1000</span>), index=pd.date_range('<span class="number">1</span>/<span class="number">1</span>/<span class="number">2000</span>', periods=<span class="number">1000</span>))</span><br></pre></td></tr></table></figure>
+<p>In [131]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ts</span> = ts.cumsum()</span><br></pre></td></tr></table></figure>
+<p>In [132]:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ts</span><span class="selector-class">.plot</span>()</span><br></pre></td></tr></table></figure>
+<p>Out[132]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;matplotlib<span class="selector-class">.axes</span>._subplots<span class="selector-class">.AxesSubplot</span> at <span class="number">0</span>x8a81b00&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/12/13/10分钟入门Pandas/132.png" alt=""></p>
+<p>In [133]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame(np<span class="selector-class">.random</span><span class="selector-class">.randn</span>(<span class="number">1000</span>, <span class="number">4</span>), index=ts<span class="selector-class">.index</span>,</span><br><span class="line">                  <span class="attribute">columns</span>=[<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>])</span><br></pre></td></tr></table></figure>
+<p>In [134]:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">df</span> = df.cumsum()</span><br></pre></td></tr></table></figure>
+<p>In [135]:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">plt</span><span class="selector-class">.figure</span>(); <span class="selector-tag">df</span><span class="selector-class">.plot</span>(); <span class="selector-tag">plt</span><span class="selector-class">.legend</span>(loc=<span class="string">'best'</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[135]:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;matplotlib<span class="selector-class">.legend</span><span class="selector-class">.Legend</span> at <span class="number">0</span>x8cebf98&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/12/13/10分钟入门Pandas/135.png" alt=""></p>
+<p>In [136]:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.to_csv</span>(<span class="string">'foo.csv'</span>)</span><br></pre></td></tr></table></figure>
+<p>In [137]:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">pd</span><span class="selector-class">.read_csv</span>(<span class="string">'foo.csv'</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[137]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Unnamed: 0</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2000-01-01</td>
+<td>-0.030936</td>
+<td>0.895485</td>
+<td>0.860234</td>
+<td>0.436905</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2000-01-02</td>
+<td>0.462136</td>
+<td>1.529305</td>
+<td>1.465795</td>
+<td>0.275320</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2000-01-03</td>
+<td>1.347457</td>
+<td>2.146237</td>
+<td>1.025922</td>
+<td>1.807516</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2000-01-04</td>
+<td>1.762626</td>
+<td>1.617238</td>
+<td>2.269617</td>
+<td>2.750168</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2000-01-05</td>
+<td>0.752935</td>
+<td>-0.573293</td>
+<td>2.496633</td>
+<td>2.555544</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2000-01-06</td>
+<td>0.559531</td>
+<td>-1.075933</td>
+<td>3.604460</td>
+<td>2.045109</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2000-01-07</td>
+<td>2.864227</td>
+<td>2.116665</td>
+<td>4.646330</td>
+<td>0.552505</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2000-01-08</td>
+<td>2.790815</td>
+<td>1.112905</td>
+<td>6.876355</td>
+<td>0.842887</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2000-01-09</td>
+<td>2.781517</td>
+<td>-0.038389</td>
+<td>7.562739</td>
+<td>-0.677093</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2000-01-10</td>
+<td>3.277815</td>
+<td>0.783239</td>
+<td>8.625772</td>
+<td>-1.210071</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2000-01-11</td>
+<td>2.671833</td>
+<td>1.628914</td>
+<td>9.013839</td>
+<td>-0.878836</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2000-01-12</td>
+<td>3.358392</td>
+<td>1.286629</td>
+<td>7.869067</td>
+<td>0.927850</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2000-01-13</td>
+<td>2.934755</td>
+<td>1.281981</td>
+<td>8.026394</td>
+<td>0.944987</td>
+</tr>
+<tr>
+<td>13</td>
+<td>2000-01-14</td>
+<td>3.855528</td>
+<td>1.044585</td>
+<td>7.611520</td>
+<td>-0.030036</td>
+</tr>
+<tr>
+<td>14</td>
+<td>2000-01-15</td>
+<td>3.197158</td>
+<td>1.342844</td>
+<td>7.764532</td>
+<td>0.003429</td>
+</tr>
+<tr>
+<td>15</td>
+<td>2000-01-16</td>
+<td>3.397053</td>
+<td>-0.159531</td>
+<td>8.506764</td>
+<td>0.788280</td>
+</tr>
+<tr>
+<td>16</td>
+<td>2000-01-17</td>
+<td>2.604527</td>
+<td>0.237801</td>
+<td>9.856556</td>
+<td>1.040767</td>
+</tr>
+<tr>
+<td>17</td>
+<td>2000-01-18</td>
+<td>5.084828</td>
+<td>0.499864</td>
+<td>9.658846</td>
+<td>2.005989</td>
+</tr>
+<tr>
+<td>18</td>
+<td>2000-01-19</td>
+<td>4.106095</td>
+<td>-1.350089</td>
+<td>9.143522</td>
+<td>1.686732</td>
+</tr>
+<tr>
+<td>19</td>
+<td>2000-01-20</td>
+<td>4.175043</td>
+<td>-1.190392</td>
+<td>8.058163</td>
+<td>0.787240</td>
+</tr>
+<tr>
+<td>20</td>
+<td>2000-01-21</td>
+<td>5.185731</td>
+<td>-0.777054</td>
+<td>8.812265</td>
+<td>0.419670</td>
+</tr>
+<tr>
+<td>21</td>
+<td>2000-01-22</td>
+<td>4.371896</td>
+<td>0.233903</td>
+<td>8.661171</td>
+<td>0.965343</td>
+</tr>
+<tr>
+<td>22</td>
+<td>2000-01-23</td>
+<td>4.828027</td>
+<td>-1.879995</td>
+<td>9.411272</td>
+<td>0.913708</td>
+</tr>
+<tr>
+<td>23</td>
+<td>2000-01-24</td>
+<td>5.439256</td>
+<td>-1.489195</td>
+<td>9.325441</td>
+<td>-0.105687</td>
+</tr>
+<tr>
+<td>24</td>
+<td>2000-01-25</td>
+<td>4.692312</td>
+<td>-2.057943</td>
+<td>11.866773</td>
+<td>0.281276</td>
+</tr>
+<tr>
+<td>25</td>
+<td>2000-01-26</td>
+<td>3.076197</td>
+<td>-1.366478</td>
+<td>13.091266</td>
+<td>1.299899</td>
+</tr>
+<tr>
+<td>26</td>
+<td>2000-01-27</td>
+<td>3.061897</td>
+<td>-1.074740</td>
+<td>12.495540</td>
+<td>2.413354</td>
+</tr>
+<tr>
+<td>27</td>
+<td>2000-01-28</td>
+<td>3.331420</td>
+<td>-1.146924</td>
+<td>12.470048</td>
+<td>4.507037</td>
+</tr>
+<tr>
+<td>28</td>
+<td>2000-01-29</td>
+<td>2.539132</td>
+<td>-2.027100</td>
+<td>13.117951</td>
+<td>4.890443</td>
+</tr>
+<tr>
+<td>29</td>
+<td>2000-01-30</td>
+<td>3.063721</td>
+<td>-0.814003</td>
+<td>13.669964</td>
+<td>4.517990</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>970</td>
+<td>2002-08-28</td>
+<td>0.284504</td>
+<td>-22.271339</td>
+<td>15.981331</td>
+<td>15.047098</td>
+</tr>
+<tr>
+<td>971</td>
+<td>2002-08-29</td>
+<td>1.179390</td>
+<td>-21.201687</td>
+<td>15.868212</td>
+<td>14.459094</td>
+</tr>
+<tr>
+<td>972</td>
+<td>2002-08-30</td>
+<td>-1.064233</td>
+<td>-22.113170</td>
+<td>15.675313</td>
+<td>14.426811</td>
+</tr>
+<tr>
+<td>973</td>
+<td>2002-08-31</td>
+<td>-0.204647</td>
+<td>-21.770136</td>
+<td>16.291319</td>
+<td>16.018532</td>
+</tr>
+<tr>
+<td>974</td>
+<td>2002-09-01</td>
+<td>1.565074</td>
+<td>-22.972256</td>
+<td>16.085625</td>
+<td>17.164091</td>
+</tr>
+<tr>
+<td>975</td>
+<td>2002-09-02</td>
+<td>1.594709</td>
+<td>-22.544796</td>
+<td>15.194863</td>
+<td>16.747902</td>
+</tr>
+<tr>
+<td>976</td>
+<td>2002-09-03</td>
+<td>2.058587</td>
+<td>-23.616482</td>
+<td>16.108197</td>
+<td>15.722705</td>
+</tr>
+<tr>
+<td>977</td>
+<td>2002-09-04</td>
+<td>2.204938</td>
+<td>-24.498805</td>
+<td>17.115751</td>
+<td>16.182108</td>
+</tr>
+<tr>
+<td>978</td>
+<td>2002-09-05</td>
+<td>2.544514</td>
+<td>-25.655447</td>
+<td>17.757754</td>
+<td>13.716535</td>
+</tr>
+<tr>
+<td>979</td>
+<td>2002-09-06</td>
+<td>0.042641</td>
+<td>-26.231512</td>
+<td>16.933801</td>
+<td>14.481075</td>
+</tr>
+<tr>
+<td>980</td>
+<td>2002-09-07</td>
+<td>0.151732</td>
+<td>-23.564705</td>
+<td>18.606103</td>
+<td>15.288614</td>
+</tr>
+<tr>
+<td>981</td>
+<td>2002-09-08</td>
+<td>-1.103293</td>
+<td>-22.145037</td>
+<td>19.017814</td>
+<td>14.003808</td>
+</tr>
+<tr>
+<td>982</td>
+<td>2002-09-09</td>
+<td>-0.886503</td>
+<td>-23.226622</td>
+<td>18.262366</td>
+<td>14.134913</td>
+</tr>
+<tr>
+<td>983</td>
+<td>2002-09-10</td>
+<td>-0.460123</td>
+<td>-24.301707</td>
+<td>18.189121</td>
+<td>12.835480</td>
+</tr>
+<tr>
+<td>984</td>
+<td>2002-09-11</td>
+<td>-0.828844</td>
+<td>-25.875458</td>
+<td>19.843507</td>
+<td>12.759591</td>
+</tr>
+<tr>
+<td>985</td>
+<td>2002-09-12</td>
+<td>-0.517894</td>
+<td>-25.686486</td>
+<td>21.261322</td>
+<td>11.394933</td>
+</tr>
+<tr>
+<td>986</td>
+<td>2002-09-13</td>
+<td>0.184588</td>
+<td>-25.469125</td>
+<td>21.141841</td>
+<td>11.325127</td>
+</tr>
+<tr>
+<td>987</td>
+<td>2002-09-14</td>
+<td>1.841196</td>
+<td>-23.770084</td>
+<td>21.204105</td>
+<td>11.307507</td>
+</tr>
+<tr>
+<td>988</td>
+<td>2002-09-15</td>
+<td>3.223569</td>
+<td>-23.631714</td>
+<td>20.283344</td>
+<td>11.293488</td>
+</tr>
+<tr>
+<td>989</td>
+<td>2002-09-16</td>
+<td>3.391174</td>
+<td>-22.155609</td>
+<td>19.469558</td>
+<td>11.086509</td>
+</tr>
+<tr>
+<td>990</td>
+<td>2002-09-17</td>
+<td>2.899235</td>
+<td>-21.962757</td>
+<td>20.295803</td>
+<td>10.123460</td>
+</tr>
+<tr>
+<td>991</td>
+<td>2002-09-18</td>
+<td>1.712088</td>
+<td>-20.568953</td>
+<td>21.282493</td>
+<td>10.251396</td>
+</tr>
+<tr>
+<td>992</td>
+<td>2002-09-19</td>
+<td>3.281950</td>
+<td>-21.733617</td>
+<td>20.914229</td>
+<td>8.739577</td>
+</tr>
+<tr>
+<td>993</td>
+<td>2002-09-20</td>
+<td>2.324456</td>
+<td>-21.464629</td>
+<td>20.747934</td>
+<td>8.104013</td>
+</tr>
+<tr>
+<td>994</td>
+<td>2002-09-21</td>
+<td>3.534397</td>
+<td>-21.065582</td>
+<td>18.900106</td>
+<td>9.929498</td>
+</tr>
+<tr>
+<td>995</td>
+<td>2002-09-22</td>
+<td>2.547043</td>
+<td>-21.121919</td>
+<td>19.291717</td>
+<td>9.657817</td>
+</tr>
+<tr>
+<td>996</td>
+<td>2002-09-23</td>
+<td>3.967868</td>
+<td>-20.993894</td>
+<td>19.146004</td>
+<td>8.970358</td>
+</tr>
+<tr>
+<td>997</td>
+<td>2002-09-24</td>
+<td>3.223028</td>
+<td>-21.249086</td>
+<td>19.858325</td>
+<td>9.268188</td>
+</tr>
+<tr>
+<td>998</td>
+<td>2002-09-25</td>
+<td>3.895291</td>
+<td>-21.572320</td>
+<td>21.571366</td>
+<td>10.031764</td>
+</tr>
+<tr>
+<td>999</td>
+<td>2002-09-26</td>
+<td>3.295146</td>
+<td>-20.708933</td>
+<td>22.339290</td>
+<td>10.840932</td>
+</tr>
+</tbody>
+</table>
+<p>1000 rows × 5 columns</p>
+<p>In [138]:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.to_hdf</span>(<span class="string">'foo.h5'</span>,<span class="string">'df'</span>)</span><br></pre></td></tr></table></figure>
+<p>In [139]:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">pd</span><span class="selector-class">.read_hdf</span>(<span class="string">'foo.h5'</span>,<span class="string">'df'</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[139]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2000-01-01</td>
+<td>-0.030936</td>
+<td>0.895485</td>
+<td>0.860234</td>
+<td>0.436905</td>
+</tr>
+<tr>
+<td>2000-01-02</td>
+<td>0.462136</td>
+<td>1.529305</td>
+<td>1.465795</td>
+<td>0.275320</td>
+</tr>
+<tr>
+<td>2000-01-03</td>
+<td>1.347457</td>
+<td>2.146237</td>
+<td>1.025922</td>
+<td>1.807516</td>
+</tr>
+<tr>
+<td>2000-01-04</td>
+<td>1.762626</td>
+<td>1.617238</td>
+<td>2.269617</td>
+<td>2.750168</td>
+</tr>
+<tr>
+<td>2000-01-05</td>
+<td>0.752935</td>
+<td>-0.573293</td>
+<td>2.496633</td>
+<td>2.555544</td>
+</tr>
+<tr>
+<td>2000-01-06</td>
+<td>0.559531</td>
+<td>-1.075933</td>
+<td>3.604460</td>
+<td>2.045109</td>
+</tr>
+<tr>
+<td>2000-01-07</td>
+<td>2.864227</td>
+<td>2.116665</td>
+<td>4.646330</td>
+<td>0.552505</td>
+</tr>
+<tr>
+<td>2000-01-08</td>
+<td>2.790815</td>
+<td>1.112905</td>
+<td>6.876355</td>
+<td>0.842887</td>
+</tr>
+<tr>
+<td>2000-01-09</td>
+<td>2.781517</td>
+<td>-0.038389</td>
+<td>7.562739</td>
+<td>-0.677093</td>
+</tr>
+<tr>
+<td>2000-01-10</td>
+<td>3.277815</td>
+<td>0.783239</td>
+<td>8.625772</td>
+<td>-1.210071</td>
+</tr>
+<tr>
+<td>2000-01-11</td>
+<td>2.671833</td>
+<td>1.628914</td>
+<td>9.013839</td>
+<td>-0.878836</td>
+</tr>
+<tr>
+<td>2000-01-12</td>
+<td>3.358392</td>
+<td>1.286629</td>
+<td>7.869067</td>
+<td>0.927850</td>
+</tr>
+<tr>
+<td>2000-01-13</td>
+<td>2.934755</td>
+<td>1.281981</td>
+<td>8.026394</td>
+<td>0.944987</td>
+</tr>
+<tr>
+<td>2000-01-14</td>
+<td>3.855528</td>
+<td>1.044585</td>
+<td>7.611520</td>
+<td>-0.030036</td>
+</tr>
+<tr>
+<td>2000-01-15</td>
+<td>3.197158</td>
+<td>1.342844</td>
+<td>7.764532</td>
+<td>0.003429</td>
+</tr>
+<tr>
+<td>2000-01-16</td>
+<td>3.397053</td>
+<td>-0.159531</td>
+<td>8.506764</td>
+<td>0.788280</td>
+</tr>
+<tr>
+<td>2000-01-17</td>
+<td>2.604527</td>
+<td>0.237801</td>
+<td>9.856556</td>
+<td>1.040767</td>
+</tr>
+<tr>
+<td>2000-01-18</td>
+<td>5.084828</td>
+<td>0.499864</td>
+<td>9.658846</td>
+<td>2.005989</td>
+</tr>
+<tr>
+<td>2000-01-19</td>
+<td>4.106095</td>
+<td>-1.350089</td>
+<td>9.143522</td>
+<td>1.686732</td>
+</tr>
+<tr>
+<td>2000-01-20</td>
+<td>4.175043</td>
+<td>-1.190392</td>
+<td>8.058163</td>
+<td>0.787240</td>
+</tr>
+<tr>
+<td>2000-01-21</td>
+<td>5.185731</td>
+<td>-0.777054</td>
+<td>8.812265</td>
+<td>0.419670</td>
+</tr>
+<tr>
+<td>2000-01-22</td>
+<td>4.371896</td>
+<td>0.233903</td>
+<td>8.661171</td>
+<td>0.965343</td>
+</tr>
+<tr>
+<td>2000-01-23</td>
+<td>4.828027</td>
+<td>-1.879995</td>
+<td>9.411272</td>
+<td>0.913708</td>
+</tr>
+<tr>
+<td>2000-01-24</td>
+<td>5.439256</td>
+<td>-1.489195</td>
+<td>9.325441</td>
+<td>-0.105687</td>
+</tr>
+<tr>
+<td>2000-01-25</td>
+<td>4.692312</td>
+<td>-2.057943</td>
+<td>11.866773</td>
+<td>0.281276</td>
+</tr>
+<tr>
+<td>2000-01-26</td>
+<td>3.076197</td>
+<td>-1.366478</td>
+<td>13.091266</td>
+<td>1.299899</td>
+</tr>
+<tr>
+<td>2000-01-27</td>
+<td>3.061897</td>
+<td>-1.074740</td>
+<td>12.495540</td>
+<td>2.413354</td>
+</tr>
+<tr>
+<td>2000-01-28</td>
+<td>3.331420</td>
+<td>-1.146924</td>
+<td>12.470048</td>
+<td>4.507037</td>
+</tr>
+<tr>
+<td>2000-01-29</td>
+<td>2.539132</td>
+<td>-2.027100</td>
+<td>13.117951</td>
+<td>4.890443</td>
+</tr>
+<tr>
+<td>2000-01-30</td>
+<td>3.063721</td>
+<td>-0.814003</td>
+<td>13.669964</td>
+<td>4.517990</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>2002-08-28</td>
+<td>0.284504</td>
+<td>-22.271339</td>
+<td>15.981331</td>
+<td>15.047098</td>
+</tr>
+<tr>
+<td>2002-08-29</td>
+<td>1.179390</td>
+<td>-21.201687</td>
+<td>15.868212</td>
+<td>14.459094</td>
+</tr>
+<tr>
+<td>2002-08-30</td>
+<td>-1.064233</td>
+<td>-22.113170</td>
+<td>15.675313</td>
+<td>14.426811</td>
+</tr>
+<tr>
+<td>2002-08-31</td>
+<td>-0.204647</td>
+<td>-21.770136</td>
+<td>16.291319</td>
+<td>16.018532</td>
+</tr>
+<tr>
+<td>2002-09-01</td>
+<td>1.565074</td>
+<td>-22.972256</td>
+<td>16.085625</td>
+<td>17.164091</td>
+</tr>
+<tr>
+<td>2002-09-02</td>
+<td>1.594709</td>
+<td>-22.544796</td>
+<td>15.194863</td>
+<td>16.747902</td>
+</tr>
+<tr>
+<td>2002-09-03</td>
+<td>2.058587</td>
+<td>-23.616482</td>
+<td>16.108197</td>
+<td>15.722705</td>
+</tr>
+<tr>
+<td>2002-09-04</td>
+<td>2.204938</td>
+<td>-24.498805</td>
+<td>17.115751</td>
+<td>16.182108</td>
+</tr>
+<tr>
+<td>2002-09-05</td>
+<td>2.544514</td>
+<td>-25.655447</td>
+<td>17.757754</td>
+<td>13.716535</td>
+</tr>
+<tr>
+<td>2002-09-06</td>
+<td>0.042641</td>
+<td>-26.231512</td>
+<td>16.933801</td>
+<td>14.481075</td>
+</tr>
+<tr>
+<td>2002-09-07</td>
+<td>0.151732</td>
+<td>-23.564705</td>
+<td>18.606103</td>
+<td>15.288614</td>
+</tr>
+<tr>
+<td>2002-09-08</td>
+<td>-1.103293</td>
+<td>-22.145037</td>
+<td>19.017814</td>
+<td>14.003808</td>
+</tr>
+<tr>
+<td>2002-09-09</td>
+<td>-0.886503</td>
+<td>-23.226622</td>
+<td>18.262366</td>
+<td>14.134913</td>
+</tr>
+<tr>
+<td>2002-09-10</td>
+<td>-0.460123</td>
+<td>-24.301707</td>
+<td>18.189121</td>
+<td>12.835480</td>
+</tr>
+<tr>
+<td>2002-09-11</td>
+<td>-0.828844</td>
+<td>-25.875458</td>
+<td>19.843507</td>
+<td>12.759591</td>
+</tr>
+<tr>
+<td>2002-09-12</td>
+<td>-0.517894</td>
+<td>-25.686486</td>
+<td>21.261322</td>
+<td>11.394933</td>
+</tr>
+<tr>
+<td>2002-09-13</td>
+<td>0.184588</td>
+<td>-25.469125</td>
+<td>21.141841</td>
+<td>11.325127</td>
+</tr>
+<tr>
+<td>2002-09-14</td>
+<td>1.841196</td>
+<td>-23.770084</td>
+<td>21.204105</td>
+<td>11.307507</td>
+</tr>
+<tr>
+<td>2002-09-15</td>
+<td>3.223569</td>
+<td>-23.631714</td>
+<td>20.283344</td>
+<td>11.293488</td>
+</tr>
+<tr>
+<td>2002-09-16</td>
+<td>3.391174</td>
+<td>-22.155609</td>
+<td>19.469558</td>
+<td>11.086509</td>
+</tr>
+<tr>
+<td>2002-09-17</td>
+<td>2.899235</td>
+<td>-21.962757</td>
+<td>20.295803</td>
+<td>10.123460</td>
+</tr>
+<tr>
+<td>2002-09-18</td>
+<td>1.712088</td>
+<td>-20.568953</td>
+<td>21.282493</td>
+<td>10.251396</td>
+</tr>
+<tr>
+<td>2002-09-19</td>
+<td>3.281950</td>
+<td>-21.733617</td>
+<td>20.914229</td>
+<td>8.739577</td>
+</tr>
+<tr>
+<td>2002-09-20</td>
+<td>2.324456</td>
+<td>-21.464629</td>
+<td>20.747934</td>
+<td>8.104013</td>
+</tr>
+<tr>
+<td>2002-09-21</td>
+<td>3.534397</td>
+<td>-21.065582</td>
+<td>18.900106</td>
+<td>9.929498</td>
+</tr>
+<tr>
+<td>2002-09-22</td>
+<td>2.547043</td>
+<td>-21.121919</td>
+<td>19.291717</td>
+<td>9.657817</td>
+</tr>
+<tr>
+<td>2002-09-23</td>
+<td>3.967868</td>
+<td>-20.993894</td>
+<td>19.146004</td>
+<td>8.970358</td>
+</tr>
+<tr>
+<td>2002-09-24</td>
+<td>3.223028</td>
+<td>-21.249086</td>
+<td>19.858325</td>
+<td>9.268188</td>
+</tr>
+<tr>
+<td>2002-09-25</td>
+<td>3.895291</td>
+<td>-21.572320</td>
+<td>21.571366</td>
+<td>10.031764</td>
+</tr>
+<tr>
+<td>2002-09-26</td>
+<td>3.295146</td>
+<td>-20.708933</td>
+<td>22.339290</td>
+<td>10.840932</td>
+</tr>
+</tbody>
+</table>
+<p>1000 rows × 4 columns</p>
+<p>In [140]:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.to_excel</span>(<span class="string">'foo.xlsx'</span>, sheet_name=<span class="string">'Sheet1'</span>)</span><br></pre></td></tr></table></figure>
+<p>In [141]:</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.read_excel(<span class="string">'foo.xlsx'</span>, <span class="string">'Sheet1'</span>, index_col=<span class="literal">None</span>, na_values=<span class="meta">[</span><span class="string">'NA'</span><span class="meta">]</span>)</span><br></pre></td></tr></table></figure>
+<p>Out[141]:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2000-01-01</td>
+<td>-0.030936</td>
+<td>0.895485</td>
+<td>0.860234</td>
+<td>0.436905</td>
+</tr>
+<tr>
+<td>2000-01-02</td>
+<td>0.462136</td>
+<td>1.529305</td>
+<td>1.465795</td>
+<td>0.275320</td>
+</tr>
+<tr>
+<td>2000-01-03</td>
+<td>1.347457</td>
+<td>2.146237</td>
+<td>1.025922</td>
+<td>1.807516</td>
+</tr>
+<tr>
+<td>2000-01-04</td>
+<td>1.762626</td>
+<td>1.617238</td>
+<td>2.269617</td>
+<td>2.750168</td>
+</tr>
+<tr>
+<td>2000-01-05</td>
+<td>0.752935</td>
+<td>-0.573293</td>
+<td>2.496633</td>
+<td>2.555544</td>
+</tr>
+<tr>
+<td>2000-01-06</td>
+<td>0.559531</td>
+<td>-1.075933</td>
+<td>3.604460</td>
+<td>2.045109</td>
+</tr>
+<tr>
+<td>2000-01-07</td>
+<td>2.864227</td>
+<td>2.116665</td>
+<td>4.646330</td>
+<td>0.552505</td>
+</tr>
+<tr>
+<td>2000-01-08</td>
+<td>2.790815</td>
+<td>1.112905</td>
+<td>6.876355</td>
+<td>0.842887</td>
+</tr>
+<tr>
+<td>2000-01-09</td>
+<td>2.781517</td>
+<td>-0.038389</td>
+<td>7.562739</td>
+<td>-0.677093</td>
+</tr>
+<tr>
+<td>2000-01-10</td>
+<td>3.277815</td>
+<td>0.783239</td>
+<td>8.625772</td>
+<td>-1.210071</td>
+</tr>
+<tr>
+<td>2000-01-11</td>
+<td>2.671833</td>
+<td>1.628914</td>
+<td>9.013839</td>
+<td>-0.878836</td>
+</tr>
+<tr>
+<td>2000-01-12</td>
+<td>3.358392</td>
+<td>1.286629</td>
+<td>7.869067</td>
+<td>0.927850</td>
+</tr>
+<tr>
+<td>2000-01-13</td>
+<td>2.934755</td>
+<td>1.281981</td>
+<td>8.026394</td>
+<td>0.944987</td>
+</tr>
+<tr>
+<td>2000-01-14</td>
+<td>3.855528</td>
+<td>1.044585</td>
+<td>7.611520</td>
+<td>-0.030036</td>
+</tr>
+<tr>
+<td>2000-01-15</td>
+<td>3.197158</td>
+<td>1.342844</td>
+<td>7.764532</td>
+<td>0.003429</td>
+</tr>
+<tr>
+<td>2000-01-16</td>
+<td>3.397053</td>
+<td>-0.159531</td>
+<td>8.506764</td>
+<td>0.788280</td>
+</tr>
+<tr>
+<td>2000-01-17</td>
+<td>2.604527</td>
+<td>0.237801</td>
+<td>9.856556</td>
+<td>1.040767</td>
+</tr>
+<tr>
+<td>2000-01-18</td>
+<td>5.084828</td>
+<td>0.499864</td>
+<td>9.658846</td>
+<td>2.005989</td>
+</tr>
+<tr>
+<td>2000-01-19</td>
+<td>4.106095</td>
+<td>-1.350089</td>
+<td>9.143522</td>
+<td>1.686732</td>
+</tr>
+<tr>
+<td>2000-01-20</td>
+<td>4.175043</td>
+<td>-1.190392</td>
+<td>8.058163</td>
+<td>0.787240</td>
+</tr>
+<tr>
+<td>2000-01-21</td>
+<td>5.185731</td>
+<td>-0.777054</td>
+<td>8.812265</td>
+<td>0.419670</td>
+</tr>
+<tr>
+<td>2000-01-22</td>
+<td>4.371896</td>
+<td>0.233903</td>
+<td>8.661171</td>
+<td>0.965343</td>
+</tr>
+<tr>
+<td>2000-01-23</td>
+<td>4.828027</td>
+<td>-1.879995</td>
+<td>9.411272</td>
+<td>0.913708</td>
+</tr>
+<tr>
+<td>2000-01-24</td>
+<td>5.439256</td>
+<td>-1.489195</td>
+<td>9.325441</td>
+<td>-0.105687</td>
+</tr>
+<tr>
+<td>2000-01-25</td>
+<td>4.692312</td>
+<td>-2.057943</td>
+<td>11.866773</td>
+<td>0.281276</td>
+</tr>
+<tr>
+<td>2000-01-26</td>
+<td>3.076197</td>
+<td>-1.366478</td>
+<td>13.091266</td>
+<td>1.299899</td>
+</tr>
+<tr>
+<td>2000-01-27</td>
+<td>3.061897</td>
+<td>-1.074740</td>
+<td>12.495540</td>
+<td>2.413354</td>
+</tr>
+<tr>
+<td>2000-01-28</td>
+<td>3.331420</td>
+<td>-1.146924</td>
+<td>12.470048</td>
+<td>4.507037</td>
+</tr>
+<tr>
+<td>2000-01-29</td>
+<td>2.539132</td>
+<td>-2.027100</td>
+<td>13.117951</td>
+<td>4.890443</td>
+</tr>
+<tr>
+<td>2000-01-30</td>
+<td>3.063721</td>
+<td>-0.814003</td>
+<td>13.669964</td>
+<td>4.517990</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>2002-08-28</td>
+<td>0.284504</td>
+<td>-22.271339</td>
+<td>15.981331</td>
+<td>15.047098</td>
+</tr>
+<tr>
+<td>2002-08-29</td>
+<td>1.179390</td>
+<td>-21.201687</td>
+<td>15.868212</td>
+<td>14.459094</td>
+</tr>
+<tr>
+<td>2002-08-30</td>
+<td>-1.064233</td>
+<td>-22.113170</td>
+<td>15.675313</td>
+<td>14.426811</td>
+</tr>
+<tr>
+<td>2002-08-31</td>
+<td>-0.204647</td>
+<td>-21.770136</td>
+<td>16.291319</td>
+<td>16.018532</td>
+</tr>
+<tr>
+<td>2002-09-01</td>
+<td>1.565074</td>
+<td>-22.972256</td>
+<td>16.085625</td>
+<td>17.164091</td>
+</tr>
+<tr>
+<td>2002-09-02</td>
+<td>1.594709</td>
+<td>-22.544796</td>
+<td>15.194863</td>
+<td>16.747902</td>
+</tr>
+<tr>
+<td>2002-09-03</td>
+<td>2.058587</td>
+<td>-23.616482</td>
+<td>16.108197</td>
+<td>15.722705</td>
+</tr>
+<tr>
+<td>2002-09-04</td>
+<td>2.204938</td>
+<td>-24.498805</td>
+<td>17.115751</td>
+<td>16.182108</td>
+</tr>
+<tr>
+<td>2002-09-05</td>
+<td>2.544514</td>
+<td>-25.655447</td>
+<td>17.757754</td>
+<td>13.716535</td>
+</tr>
+<tr>
+<td>2002-09-06</td>
+<td>0.042641</td>
+<td>-26.231512</td>
+<td>16.933801</td>
+<td>14.481075</td>
+</tr>
+<tr>
+<td>2002-09-07</td>
+<td>0.151732</td>
+<td>-23.564705</td>
+<td>18.606103</td>
+<td>15.288614</td>
+</tr>
+<tr>
+<td>2002-09-08</td>
+<td>-1.103293</td>
+<td>-22.145037</td>
+<td>19.017814</td>
+<td>14.003808</td>
+</tr>
+<tr>
+<td>2002-09-09</td>
+<td>-0.886503</td>
+<td>-23.226622</td>
+<td>18.262366</td>
+<td>14.134913</td>
+</tr>
+<tr>
+<td>2002-09-10</td>
+<td>-0.460123</td>
+<td>-24.301707</td>
+<td>18.189121</td>
+<td>12.835480</td>
+</tr>
+<tr>
+<td>2002-09-11</td>
+<td>-0.828844</td>
+<td>-25.875458</td>
+<td>19.843507</td>
+<td>12.759591</td>
+</tr>
+<tr>
+<td>2002-09-12</td>
+<td>-0.517894</td>
+<td>-25.686486</td>
+<td>21.261322</td>
+<td>11.394933</td>
+</tr>
+<tr>
+<td>2002-09-13</td>
+<td>0.184588</td>
+<td>-25.469125</td>
+<td>21.141841</td>
+<td>11.325127</td>
+</tr>
+<tr>
+<td>2002-09-14</td>
+<td>1.841196</td>
+<td>-23.770084</td>
+<td>21.204105</td>
+<td>11.307507</td>
+</tr>
+<tr>
+<td>2002-09-15</td>
+<td>3.223569</td>
+<td>-23.631714</td>
+<td>20.283344</td>
+<td>11.293488</td>
+</tr>
+<tr>
+<td>2002-09-16</td>
+<td>3.391174</td>
+<td>-22.155609</td>
+<td>19.469558</td>
+<td>11.086509</td>
+</tr>
+<tr>
+<td>2002-09-17</td>
+<td>2.899235</td>
+<td>-21.962757</td>
+<td>20.295803</td>
+<td>10.123460</td>
+</tr>
+<tr>
+<td>2002-09-18</td>
+<td>1.712088</td>
+<td>-20.568953</td>
+<td>21.282493</td>
+<td>10.251396</td>
+</tr>
+<tr>
+<td>2002-09-19</td>
+<td>3.281950</td>
+<td>-21.733617</td>
+<td>20.914229</td>
+<td>8.739577</td>
+</tr>
+<tr>
+<td>2002-09-20</td>
+<td>2.324456</td>
+<td>-21.464629</td>
+<td>20.747934</td>
+<td>8.104013</td>
+</tr>
+<tr>
+<td>2002-09-21</td>
+<td>3.534397</td>
+<td>-21.065582</td>
+<td>18.900106</td>
+<td>9.929498</td>
+</tr>
+<tr>
+<td>2002-09-22</td>
+<td>2.547043</td>
+<td>-21.121919</td>
+<td>19.291717</td>
+<td>9.657817</td>
+</tr>
+<tr>
+<td>2002-09-23</td>
+<td>3.967868</td>
+<td>-20.993894</td>
+<td>19.146004</td>
+<td>8.970358</td>
+</tr>
+<tr>
+<td>2002-09-24</td>
+<td>3.223028</td>
+<td>-21.249086</td>
+<td>19.858325</td>
+<td>9.268188</td>
+</tr>
+<tr>
+<td>2002-09-25</td>
+<td>3.895291</td>
+<td>-21.572320</td>
+<td>21.571366</td>
+<td>10.031764</td>
+</tr>
+<tr>
+<td>2002-09-26</td>
+<td>3.295146</td>
+<td>-20.708933</td>
+<td>22.339290</td>
+<td>10.840932</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_code.png" alt="Senzhong Deng 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay_code.png" alt="Senzhong Deng 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/12/删除git远程仓库文件/" rel="next" title="删除Git远程仓库文件">
+                <i class="fa fa-chevron-left"></i> 删除Git远程仓库文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Senzhong Deng" />
+            
+              <p class="site-author-name" itemprop="name">Senzhong Deng</p>
+              <p class="site-description motion-element" itemprop="description">基于学习的目的搭建这个平台欢迎志同道合的朋友一起交流学习！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1019217919@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Senzhong Deng</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">16.5k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
