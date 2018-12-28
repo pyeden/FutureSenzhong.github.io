@@ -674,7 +674,7 @@
 <p>In [17]:</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.columns</span></span><br></pre></td></tr></table></figure>
 <p>Out[17]:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Index([<span class="string">u'A'</span>, <span class="string">u'B'</span>, <span class="string">u'C'</span>, <span class="string">u'D'</span>], dtype=<span class="string">'object'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Index([<span class="string">u'A'</span>, <span class="string">u'B'</span>, <span class="string">u'C'</span>, <span class="string">u'D'</span>], dtype=<span class="string">'object'</span>)</span><br></pre></td></tr></table></figure>
 <p>In [18]:</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.values</span></span><br></pre></td></tr></table></figure>
 <p>Out[18]:</p>
@@ -2433,7 +2433,7 @@
 </tbody>
 </table>
 <p>In [88]:</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.groupby</span>(<span class="string">'A'</span>)<span class="selector-class">.sum</span>()</span><br></pre></td></tr></table></figure>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby<span class="comment">('A')</span>.sum<span class="comment">()</span></span><br></pre></td></tr></table></figure>
 <p>Out[88]:</p>
 <table>
 <thead>
@@ -3996,7 +3996,7 @@
 <p>In [140]:</p>
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">df</span><span class="selector-class">.to_excel</span>(<span class="string">'foo.xlsx'</span>, sheet_name=<span class="string">'Sheet1'</span>)</span><br></pre></td></tr></table></figure>
 <p>In [141]:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.read_excel(<span class="string">'foo.xlsx'</span>, <span class="string">'Sheet1'</span>, index_col=<span class="keyword">None</span>, na_values=[<span class="string">'NA'</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.read_excel(<span class="string">'foo.xlsx'</span>, <span class="string">'Sheet1'</span>, index_col=<span class="literal">None</span>, na_values=<span class="meta">[</span><span class="string">'NA'</span><span class="meta">]</span>)</span><br></pre></td></tr></table></figure>
 <p>Out[141]:</p>
 <table>
 <thead>
@@ -4507,6 +4507,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/12/28/配置多个ssh免密登录/" rel="prev" title="配置多个Ssh免密登录">
+                配置多个Ssh免密登录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -4577,7 +4581,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
