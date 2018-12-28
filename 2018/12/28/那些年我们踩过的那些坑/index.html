@@ -87,19 +87,19 @@
 <meta name="keywords" content="坑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="那些年我们踩过的那些坑">
-<meta property="og:url" content="http://www.pyeden.com/2018/10/20/那些年我们踩过的那些坑/index.html">
+<meta property="og:url" content="http://www.pyeden.com/2018/12/28/那些年我们踩过的那些坑/index.html">
 <meta property="og:site_name" content="从入门到跑路">
 <meta property="og:description" content="坑01 - 整数比较的坑在 Python 中一切都是对象，整数也是对象，在比较两个整数时有两个运算符==和is，它们的区别是：  is比较的是两个整数对象的id值是否相等，也就是比较两个引用是否代表了内存中同一个地址。 ==比较的是两个整数对象的内容是否相等，使用==时其实是调用了对象的__eq__()方法。  知道了is和==的区别之后，我们可以来看看下面的代码，了解Python中整数比较有哪些">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.pyeden.com/2018/10/20/那些年我们踩过的那些坑/int-is-comparation.png">
-<meta property="og:image" content="http://www.pyeden.com/2018/10/20/那些年我们踩过的那些坑/result-of-dis.png">
-<meta property="og:image" content="http://www.pyeden.com/2018/10/20/那些年我们踩过的那些坑/python-tutor-visualize.png">
-<meta property="og:image" content="http://www.pyeden.com/2018/10/20/那些年我们踩过的那些坑/python-tutor-visualize2.png">
+<meta property="og:image" content="http://www.pyeden.com/2018/12/28/那些年我们踩过的那些坑/int-is-comparation.png">
+<meta property="og:image" content="http://www.pyeden.com/2018/12/28/那些年我们踩过的那些坑/result-of-dis.png">
+<meta property="og:image" content="http://www.pyeden.com/2018/12/28/那些年我们踩过的那些坑/python-tutor-visualize.png">
+<meta property="og:image" content="http://www.pyeden.com/2018/12/28/那些年我们踩过的那些坑/python-tutor-visualize2.png">
 <meta property="og:updated_time" content="2018-12-11T12:52:54.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="那些年我们踩过的那些坑">
 <meta name="twitter:description" content="坑01 - 整数比较的坑在 Python 中一切都是对象，整数也是对象，在比较两个整数时有两个运算符==和is，它们的区别是：  is比较的是两个整数对象的id值是否相等，也就是比较两个引用是否代表了内存中同一个地址。 ==比较的是两个整数对象的内容是否相等，使用==时其实是调用了对象的__eq__()方法。  知道了is和==的区别之后，我们可以来看看下面的代码，了解Python中整数比较有哪些">
-<meta name="twitter:image" content="http://www.pyeden.com/2018/10/20/那些年我们踩过的那些坑/int-is-comparation.png">
+<meta name="twitter:image" content="http://www.pyeden.com/2018/12/28/那些年我们踩过的那些坑/int-is-comparation.png">
 
 
 
@@ -129,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="http://www.pyeden.com/2018/10/20/那些年我们踩过的那些坑/"/>
+  <link rel="canonical" href="http://www.pyeden.com/2018/12/28/那些年我们踩过的那些坑/"/>
 
 
 
@@ -309,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.pyeden.com/2018/10/20/那些年我们踩过的那些坑/">
+    <link itemprop="mainEntityOfPage" href="http://www.pyeden.com/2018/12/28/那些年我们踩过的那些坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Senzhong Deng">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T02:29:41+08:00">
-                2018-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-28T15:21:32+08:00">
+                2018-12-28
               </time>
             
 
@@ -449,13 +449,13 @@
 <p>知道了<code>is</code>和<code>==</code>的区别之后，我们可以来看看下面的代码，了解Python中整数比较有哪些坑：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    x = y = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        x += <span class="number">1</span></span><br><span class="line">        y += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> x <span class="keyword">is</span> y:</span><br><span class="line">            print(<span class="string">'%d is %d'</span> % (x, y))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'Attention! %d is not %d'</span> % (x, y))</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">truetruetrue</span><br><span class="line">    x = y = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        x -= <span class="number">1</span></span><br><span class="line">        y -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> x <span class="keyword">is</span> y:</span><br><span class="line">            print(<span class="string">'%d is %d'</span> % (x, y))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'Attention! %d is not %d'</span> % (x, y))</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 <p>上面代码的部分运行结果如下图所示，出现这个结果的原因是Python出于对性能的考虑所做的一项优化。对于整数对象，Python把一些频繁使用的整数对象缓存起来，保存到一个叫<code>small_ints</code>的链表中，在Python的整个生命周期内，任何需要引用这些整数对象的地方，都不再重新创建新的对象，而是直接引用缓存中的对象。Python把频繁使用的整数对象的值定在[-5, 256]这个区间，如果需要这个范围的整数，就直接从<code>small_ints</code>中获取引用而不是临时创建新的对象。因为大于256或小于-5的整数不在该范围之内，所以就算两个整数的值是一样，但它们是不同的对象。</p>
-<p><img src="/2018/10/20/那些年我们踩过的那些坑/int-is-comparation.png" alt=""></p>
+<p><img src="/2018/12/28/那些年我们踩过的那些坑/int-is-comparation.png" alt=""></p>
 <p>当然仅仅如此这个坑就不值一提了，如果你理解了上面的规则，我们就再看看下面的代码。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dis</span><br><span class="line">a = <span class="number">257</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    b = <span class="number">257</span>  <span class="comment"># 第6行</span></span><br><span class="line">    c = <span class="number">257</span>  <span class="comment"># 第7行</span></span><br><span class="line">    print(b <span class="keyword">is</span> c)  <span class="comment"># True</span></span><br><span class="line">    print(a <span class="keyword">is</span> b)  <span class="comment"># False</span></span><br><span class="line">    print(a <span class="keyword">is</span> c)  <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 <p>程序的执行结果已经用注释写在代码上了。够坑吧！看上去<code>a</code>、<code>b</code>和<code>c</code>的值都是一样的，但是<code>is</code>运算的结果却不一样。为什么会出现这样的结果，首先我们来说说Python程序中的代码块。所谓代码块是程序的一个最小的基本执行单位，一个模块文件、一个函数体、一个类、交互式命令中的单行代码都叫做一个代码块。上面的代码由两个代码块构成，<code>a = 257</code>是一个代码块，<code>main</code>函数是另外一个代码块。Python内部为了进一步提高性能，凡是在一个代码块中创建的整数对象，如果值不在<code>small_ints</code>缓存范围之内，但在同一个代码块中已经存在一个值与其相同的整数对象了，那么就直接引用该对象，否则创建一个新的对象出来，这条规则对不在<code>small_ints</code>范围的负数并不适用，对负数值浮点数也不适用，但对非负浮点数和字符串都是适用的，这一点读者可以自行证明。所以 <code>b is c</code>返回了<code>True</code>，而<code>a</code>和<code>b</code>不在同一个代码块中，虽然值都是257，但却是两个不同的对象，<code>is</code>运算的结果自然是<code>False</code>了。<br>为了验证刚刚的结论，我们可以借用<code>dis</code>模块（听名字就知道是进行反汇编的模块）从字节码的角度来看看这段代码。如果不理解什么是字节码，可以先看看<a href="(http://www.cnblogs.com/restran/p/4903056.html">《谈谈 Python 程序的运行原理》</a>)这篇文章。可以先用<code>import dis</code>导入<code>dis</code>模块并按照如下所示的方式修改代码。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br><span class="line">    dis.dis(main)</span><br></pre></td></tr></table></figure>
 <p>代码的执行结果如下图所示。可以看出代码第6行和第7行，也就是<code>main</code>函数中的257是从同一个位置加载的，因此是同一个对象；而代码第9行的<code>a</code>明显是从不同的地方加载的，因此引用的是不同的对象。</p>
-<p><img src="/2018/10/20/那些年我们踩过的那些坑/result-of-dis.png" alt=""></p>
+<p><img src="/2018/12/28/那些年我们踩过的那些坑/result-of-dis.png" alt=""></p>
 <p>如果还想对这个问题进行进一步深挖，推荐大家阅读<a href="https://foofish.net/python_int_implement.html" target="_blank" rel="noopener">《Python整数对象实现原理》</a>这篇文章。</p>
 <h3 id="坑02-嵌套列表的坑"><a href="#坑02-嵌套列表的坑" class="headerlink" title="坑02 - 嵌套列表的坑"></a>坑02 - 嵌套列表的坑</h3><p>Python中有一种内置的数据类型叫列表，它是一种容器，可以用来承载其他的对象（准确的说是其他对象的引用），列表中的对象可以称为列表的元素，很明显我们可以把列表作为列表中的元素，这就是所谓的嵌套列表。嵌套列表可以模拟出现实中的表格、矩阵、2D游戏的地图（如植物大战僵尸的花园）、棋盘（如国际象棋、黑白棋）等。但是在使用嵌套的列表时要小心，否则很可能遭遇非常尴尬的情况，下面是一个小例子。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    names = [<span class="string">'关羽'</span>, <span class="string">'张飞'</span>, <span class="string">'赵云'</span>, <span class="string">'马超'</span>, <span class="string">'黄忠'</span>]</span><br><span class="line">    subjs = [<span class="string">'语文'</span>, <span class="string">'数学'</span>, <span class="string">'英语'</span>]</span><br><span class="line">    scores = [[<span class="number">0</span>] * <span class="number">3</span>] * <span class="number">5</span></span><br><span class="line">    <span class="keyword">for</span> row, name <span class="keyword">in</span> enumerate(names):</span><br><span class="line">        print(<span class="string">'请输入%s的成绩'</span> % name)</span><br><span class="line">        <span class="keyword">for</span> col, subj <span class="keyword">in</span> enumerate(subjs):</span><br><span class="line">            scores[row][col] = float(input(subj + <span class="string">': '</span>))</span><br><span class="line">    print(scores)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
@@ -467,8 +467,8 @@
 <p>或者</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    names = [<span class="string">'关羽'</span>, <span class="string">'张飞'</span>, <span class="string">'赵云'</span>, <span class="string">'马超'</span>, <span class="string">'黄忠'</span>]</span><br><span class="line">    subjs = [<span class="string">'语文'</span>, <span class="string">'数学'</span>, <span class="string">'英语'</span>]</span><br><span class="line">    scores = [[<span class="number">0</span>] * <span class="number">3</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line">    <span class="keyword">for</span> row, name <span class="keyword">in</span> enumerate(names):</span><br><span class="line">        print(<span class="string">'请输入%s的成绩'</span> % name)</span><br><span class="line">        scores[row] = [<span class="number">0</span>] * <span class="number">3</span></span><br><span class="line">        <span class="keyword">for</span> col, subj <span class="keyword">in</span> enumerate(subjs):</span><br><span class="line">            scores[row][col] = float(input(subj + <span class="string">': '</span>))</span><br><span class="line">    print(scores)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 <p>如果对内存的使用不是很理解，可以看看<a href="http://www.pythontutor.com/" target="_blank" rel="noopener">PythonTutor网站</a>上提供的代码可视化执行功能，通过可视化执行，我们可以看到内存是如何分配的，从而避免在使用嵌套列表或者复制对象时可能遇到的坑。</p>
-<p><img src="/2018/10/20/那些年我们踩过的那些坑/python-tutor-visualize.png" alt=""></p>
-<p><img src="/2018/10/20/那些年我们踩过的那些坑/python-tutor-visualize2.png" alt=""></p>
+<p><img src="/2018/12/28/那些年我们踩过的那些坑/python-tutor-visualize.png" alt=""></p>
+<p><img src="/2018/12/28/那些年我们踩过的那些坑/python-tutor-visualize2.png" alt=""></p>
 <h3 id="坑03-访问修饰符的坑"><a href="#坑03-访问修饰符的坑" class="headerlink" title="坑03 - 访问修饰符的坑"></a>坑03 - 访问修饰符的坑</h3><p>用Python做过面向对象编程的人都知道，Python的类提供了两种访问控制权限，一种是公开，一种是私有（在属性或方法前加上双下划线）。而用惯了Java或C#这类编程语言的人都知道，类中的属性（数据抽象）通常都是私有的，其目的是为了将数据保护起来；而类中的方法（行为抽象）通常都是公开的，因为方法是对象向外界提供的服务。但是Python并没有从语法层面确保私有成员的私密性，因为它只是对类中所谓的私有成员进行了命名的变换，如果知道命名的规则照样可以直接访问私有成员，请看下面的代码。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self.__name = name</span><br><span class="line">        self.__age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__name + <span class="string">': '</span> + str(self.__age)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    stu = Student(<span class="string">'昊天'</span>, <span class="number">28</span>)</span><br><span class="line">    <span class="comment"># 'Student' object has no attribute '__name'</span></span><br><span class="line">    <span class="comment"># print(stu.__name)</span></span><br><span class="line">    <span class="comment"># 用下面的方式照样可以访问类中的私有成员</span></span><br><span class="line">    print(stu._Student__name)</span><br><span class="line">    print(stu._Student__age)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 <p>Python为什么要做出这样的设定呢？用一句广为流传的格言来解释这个问题：“We are all consenting adults here”（我们都是成年人）。这句话表达了很多Python程序员的一个共同观点，那就是开放比封闭要好，我们应该自己对自己的行为负责而不是从语言层面来限制对数据或方法的访问。</p>
@@ -533,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/20/Python惯例/" rel="next" title="Python惯例">
-                <i class="fa fa-chevron-left"></i> Python惯例
+              <a href="/2018/12/28/玩转PyCharm/" rel="next" title="玩转PyCharm">
+                <i class="fa fa-chevron-left"></i> 玩转PyCharm
               </a>
             
           </div>
@@ -542,10 +542,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/20/玩转PyCharm/" rel="prev" title="玩转PyCharm">
-                玩转PyCharm <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
